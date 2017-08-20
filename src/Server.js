@@ -1,18 +1,23 @@
 const express = require('express');
+const TestRoutes = require('./route/IndexRoute');
+
+const DEFAULT_CONFIG = {
+  port: 8080
+};
 
 class Server {
   constructor(config) {
     this.app = express();
-    this.config = Object.assign({
-      port: 8080
-    }, config);
+    this.config = Object.assign(DEFAULT_CONFIG, config);
     this.init();
   }
 
   init() {
-    this.app.get('/', (request, response) => {
-      response.send(`<b>Node.js Environment: ${process.env.NODE_ENV}</b>`);
-    });
+    this.routes();
+  }
+
+  routes() {
+    this.app.use(TestRoutes);
   }
 
   start() {
