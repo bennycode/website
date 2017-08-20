@@ -14,8 +14,12 @@
     "url": "git+https://github.com/welovecoding/website.git"
   },
   "scripts": {
+    "dist": "echo No \"dist\" goal specified.",
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo No \"test\" goal specified.",
+    "preversion": "yarn && npm run dist && npm test",
+    "version": "npm run dist",
+    "postversion": "git push && git push --tags"
   },
   "version": "1.0.0"
 }
