@@ -1,7 +1,8 @@
-const express = require('express');
-const app = express();
+require('dotenv').config();
 
-const PORT = 8080;
+const Server = require('./src/Server');
 
-app.get('/', (request, response) => response.send('<b>Hello, World!</b>'));
-app.listen(PORT, () => console.log(`Server is running on port "${PORT}".`));
+const server = new Server({
+  port: 8080
+});
+server.start();
