@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dist": "echo No \"dist\" goal specified.",
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "echo No \"test\" goal specified.",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",
