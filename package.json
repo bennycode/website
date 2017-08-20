@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "express": "4.15.4"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "main": "index.js",
+  "name": "@welovecoding/website",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/welovecoding/website.git"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
