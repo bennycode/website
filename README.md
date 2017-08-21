@@ -7,9 +7,3 @@
 ```
 npm start
 ``` 
-
-## Deployment
-
-```
-git push heroku master
-```
