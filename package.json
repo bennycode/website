@@ -8,7 +8,8 @@
     "cross-env": "5.0.5",
     "istanbul": "0.4.5",
     "jasmine": "2.7.0",
-    "request": "2.81.0"
+    "request": "2.81.0",
+    "rimraf": "2.6.0"
   },
   "engines": {
     "node": ">= 8.0.0"
@@ -24,8 +25,8 @@
     "dist": "echo No \"dist\" goal specified.",
     "start": "nodemon index.js",
     "test": "npm run dist && npm run test:node",
+    "test:coverage": "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
     "test:node": "cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json jasmine",
-    "test:coverage": "npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",
     "postversion": "git push && git push --tags"
