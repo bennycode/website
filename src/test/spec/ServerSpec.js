@@ -15,7 +15,11 @@ describe('Server', () => {
   describe('"stop"', () => {
     it('stops a running server.', (done) => {
       expect(server).toBeDefined();
-      server.stop(done);
+      expect(server.server).toBeDefined();
+      server.stop(() => {
+        expect(server.server).toBeUndefined();
+        done();
+      });
     });
   });
 });
