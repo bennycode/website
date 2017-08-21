@@ -1,14 +1,17 @@
 const express = require('express');
-const TestRoutes = require('./route/IndexRoute');
+const IndexRoute = require('./route/IndexRoute');
 
 const DEFAULT_CONFIG = {
-  port: 8080
+  PORT: 8080
 };
 
 class Server {
   constructor(config) {
-    this.app = express();
     this.config = Object.assign(DEFAULT_CONFIG, config);
+
+    this.app = express();
+    this.server = undefined;
+
     this.init();
   }
 
@@ -17,13 +20,19 @@ class Server {
   }
 
   routes() {
-    this.app.use(TestRoutes);
+    this.app.use(IndexRoute);
   }
 
-  start() {
-    this.app.listen(this.config.port, () => {
-      console.log(`Server is running on port "${this.config.port}".`);
-    });
+  start(callback) {
+    this.server = this.app.listen(this.config.PORT, () => callback(this.config.PORT));
+  }
+
+  stop(callback) {
+    if (this.server) {
+      this.server.close(callback);
+    } else {
+      callback();
+    }
   }
 }
 
