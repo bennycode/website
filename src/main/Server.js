@@ -30,6 +30,7 @@ class Server {
   stop(callback) {
     if (this.server) {
       this.server.close(callback);
+      this.server = undefined;
     } else {
       callback();
     }
