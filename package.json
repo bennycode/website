@@ -4,7 +4,10 @@
     "express": "4.15.4",
     "nodemon": "1.11.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cross-env": "5.0.5",
+    "jasmine": "2.7.0"
+  },
   "engines": {
     "node": ">= 8.0.0"
   },
@@ -18,7 +21,8 @@
   "scripts": {
     "dist": "echo No \"dist\" goal specified.",
     "start": "nodemon index.js",
-    "test": "echo No \"test\" goal specified.",
+    "test": "npm run dist && npm run test:node",
+    "test:node": "cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json jasmine",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",
     "postversion": "git push && git push --tags"
