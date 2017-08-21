@@ -24,7 +24,11 @@ class Server {
   }
 
   start(callback) {
-    this.server = this.app.listen(this.config.PORT, () => callback(this.config.PORT));
+    if (!this.server) {
+      this.server = this.app.listen(this.config.PORT, () => callback(this.config.PORT));
+    } else {
+      callback();
+    }
   }
 
   stop(callback) {

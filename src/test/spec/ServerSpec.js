@@ -1,7 +1,9 @@
+const request = require('request');
 const Server = require('../../main/Server');
 
 describe('Server', () => {
   let server = undefined;
+  const BASE_URL = 'http://localhost:8080/';
 
   beforeAll((done) => {
     server = new Server();
@@ -10,6 +12,15 @@ describe('Server', () => {
 
   afterAll((done) => {
     server && server.stop(done);
+  });
+
+  describe('"start"', () => {
+    it('starts a server with an index page.', (done) => {
+      request.get(BASE_URL, (error, response) => {
+        expect(response.statusCode).toBe(200);
+        done();
+      });
+    });
   });
 
   describe('"stop"', () => {
