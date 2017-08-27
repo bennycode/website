@@ -1,3 +1,4 @@
+const CategoriesRouter = require('./route/rest/service/v1/CategoriesRouter');
 const express = require('express');
 const path = require('path');
 
@@ -22,6 +23,7 @@ class Server {
   routes() {
     const PUBLIC_DIR = path.join(__dirname, 'public');
     this.app.use(express.static(PUBLIC_DIR));
+    this.app.use(CategoriesRouter);
   }
 
   start(callback) {
