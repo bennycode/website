@@ -1,5 +1,5 @@
-.yarnclean
 /.idea
+/.yarnclean
 /bower_components
 /coverage
 /node_modules
