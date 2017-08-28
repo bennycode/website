@@ -31,14 +31,15 @@
     "url": "git+https://github.com/welovecoding/website.git"
   },
   "scripts": {
-    "dist": "webpack",
-    "start": "npm run dist && concurrently \"nodemon index.js\" \"opn http://localhost:8080/\"",
-    "test": "npm run dist && npm run test:node",
-    "test:coverage": "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
-    "test:node": "cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json jasmine",
+    "coverage:backend": "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
+    "dist": "npm run dist:frontend",
+    "dist:frontend": "webpack",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "start": "npm run dist && concurrently \"nodemon index.js\" \"opn http://localhost:8080/\"",
+    "test": "npm run dist && npm run test:backend",
+    "test:backend": "cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json jasmine"
   },
   "version": "1.0.11"
 }
