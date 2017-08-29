@@ -43,5 +43,5 @@
     "test": "npm run dist && npm run test:backend",
     "test:backend": "cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json jasmine"
   },
-  "version": "1.0.11"
+  "version": "1.0.12"
 }
