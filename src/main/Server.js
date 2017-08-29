@@ -1,5 +1,6 @@
+const CategoriesRouter = require('./route/rest/service/v1/CategoriesRouter');
 const express = require('express');
-const IndexRoute = require('./route/IndexRoute');
+const path = require('path');
 
 const DEFAULT_CONFIG = {
   PORT: 8080
@@ -20,7 +21,9 @@ class Server {
   }
 
   routes() {
-    this.app.use(IndexRoute);
+    const PUBLIC_DIR = path.join(__dirname, 'public');
+    this.app.use(express.static(PUBLIC_DIR));
+    this.app.use(CategoriesRouter);
   }
 
   start(callback) {
