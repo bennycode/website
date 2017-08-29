@@ -34,7 +34,7 @@
   "scripts": {
     "coverage:backend": "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
     "dist": "npm run dist:frontend",
-    "dist:frontend": "webpack",
+    "dist:frontend": "rimraf src/main/public/js && webpack",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",
     "postversion": "git push && git push --tags",
