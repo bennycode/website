@@ -3,13 +3,15 @@ const Server = require('../../main/Server');
 
 describe('Server', () => {
   let server = undefined;
-  const BASE_URL = 'http://localhost:8080/';
+
+  const SERVER_PORT = 8072;
+  const BASE_URL = `http://localhost:${SERVER_PORT}/`;
 
   afterEach((done) => server && server.stop(done));
 
   describe('"start"', () => {
     it('starts a server with an index page.', (done) => {
-      server = new Server();
+      server = new Server({PORT: SERVER_PORT});
       server.start(() => {
         request.get(BASE_URL, (error, response) => {
           expect(response.statusCode).toBe(200);
@@ -19,19 +21,19 @@ describe('Server', () => {
     });
 
     it('executes a callback when a server is running.', (done) => {
-      server = new Server();
+      server = new Server({PORT: SERVER_PORT});
       server.start(done);
     });
 
     it('doesn\'t start a server when an instance is already running.', (done) => {
-      server = new Server();
+      server = new Server({PORT: SERVER_PORT});
       server.start(() => server.start(done));
     });
   });
 
   describe('"stop"', () => {
     beforeEach((done) => {
-      server = new Server();
+      server = new Server({PORT: SERVER_PORT});
       server.start(done);
     });
 
