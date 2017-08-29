@@ -1,14 +1,12 @@
 import React from 'react';
 
 class Categories extends React.Component {
-  renderItems() {
-    let listItems = [];
-    this.props.categories.forEach((category) => listItems.push(<li>{category.name}</li>));
-    return listItems;
+  renderListItems() {
+    return this.props.categories.map((category) => <li key={category.id}>{category.name}</li>);
   }
 
   render() {
-    return <ul>{this.renderItems()}</ul>;
+    return <ul>{this.renderListItems()}</ul>;
   }
 }
 
