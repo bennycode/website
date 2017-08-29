@@ -1,20 +1,15 @@
-import App from './components/App.jsx';
+import Categories from './components/Categories.jsx';
 import React from 'react';
-import reducers from './reducers';
-import thunk from 'redux-thunk';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
-import {render} from 'react-dom';
+import {render} from 'react-dom'
 
-const store = createStore(
-  reducers,
-  applyMiddleware(thunk)
-);
 const target = document.getElementById('root');
 
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  target
-);
+function getCategories() {
+  return window.fetch('/rest/service/v1/categories', {
+    method: 'get'
+  }).then((response) => {
+    return response.json();
+  });
+}
+
+render(<Categories categories="{getCategories()}" />, target);
