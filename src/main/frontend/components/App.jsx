@@ -1,4 +1,5 @@
 import Categories from './Categories.jsx';
+import Grid from 'material-ui/Grid';
 import React from 'react';
 
 class App extends React.Component {
@@ -16,7 +17,11 @@ class App extends React.Component {
   }
 
   render() {
-    return <Categories categories={this.state.categories} />;
+    return <Grid container spacing={24}>
+      <Grid item xs={12}>
+        <Categories categories={this.state.categories} />
+      </Grid>
+    </Grid>;
   }
 }
 
