@@ -2,7 +2,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './temp/dev.db3'
+      filename: './temp/development.db3'
     },
     migrations: {
       tableName: 'knex_migrations',
@@ -28,7 +28,7 @@ module.exports = {
   test: {
     client: 'sqlite3',
     connection: {
-      filename: './temp/dev.db3'
+      filename: './temp/test.db3'
     },
     migrations: {
       tableName: 'knex_migrations',
