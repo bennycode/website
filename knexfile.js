@@ -9,7 +9,7 @@ module.exports = {
       directory: './src/main/migrations'
     },
     seeds: {
-      directory: './src/main/seeds'
+      directory: './src/test/seeds'
     },
     useNullAsDefault: true,
   },
@@ -24,7 +24,9 @@ module.exports = {
       min: 2,
       max: 10
     },
-    seeds: false
+    seeds: {
+      directory: './src/main/seeds'
+    },
   },
   test: {
     client: 'sqlite3',
@@ -36,7 +38,7 @@ module.exports = {
       directory: './src/main/migrations'
     },
     seeds: {
-      directory: './src/main/seeds'
+      directory: './src/test/seeds'
     },
     useNullAsDefault: true,
   }
