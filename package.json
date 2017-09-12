@@ -39,7 +39,7 @@
     "coverage:backend": "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
     "dist": "npm run init:db && npm run dist:frontend",
     "dist:frontend": "rimraf src/main/public/js && webpack",
-    "init:db": "knex migrate:latest && knex seed:run",
+    "init:db": "knex migrate:latest",
     "postinstall": "npm run dist",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",
