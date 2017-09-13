@@ -3,6 +3,8 @@ node_js:
 - '8'
 notifications:
   email: false
+before_script:
+  - npm run find
 deploy:
   provider: heroku
   api_key:

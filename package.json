@@ -36,6 +36,7 @@
     "url": "git+https://github.com/welovecoding/website.git"
   },
   "scripts": {
+    "find": "node test.js",
     "coverage:backend": "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
     "dist": "npm run init:db && npm run dist:frontend",
     "dist:frontend": "rimraf src/main/public/js && webpack",
