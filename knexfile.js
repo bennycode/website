@@ -28,7 +28,7 @@ const production = {
   },
   pool: {
     min: 2,
-    max: 10
+    max: 5
   },
   seeds: {
     directory: './src/main/seeds'
