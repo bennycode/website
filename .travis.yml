@@ -3,9 +3,6 @@ node_js:
 - '8'
 notifications:
   email: false
-before_install:
-  - echo "We can put normal shell commands here"
-  - npm run find
 deploy:
   provider: heroku
   api_key:
