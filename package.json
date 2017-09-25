@@ -8,7 +8,7 @@
     "express": "5.0.0-alpha.6",
     "forever": "0.15.3",
     "knex": "0.13.0",
-    "material-ui": "1.0.0-beta.6",
+    "material-ui": "1.0.0-beta.12",
     "pg": "7.3.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
