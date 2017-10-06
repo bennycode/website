@@ -13,7 +13,7 @@ class Server {
   }
 
   init() {
-    return Promise.resolve().then(() => this.routes());
+    this.routes();
   }
 
   routes() {
@@ -32,11 +32,10 @@ class Server {
 
       this.server.register([inert], (error) => {
         if (error) throw error;
-        this.init().then(() => {
-          this.server.start((error) => {
-            if (error) throw error;
-            callback(this.server.info.port);
-          });
+        this.init();
+        this.server.start((error) => {
+          if (error) throw error;
+          callback(this.server.info.port);
         });
       });
     }
