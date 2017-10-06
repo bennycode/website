@@ -1,5 +1,5 @@
-const CategoriesRouter = require('./route/rest/service/v1/CategoriesRouter');
-const express = require('express');
+// const CategoriesRouter = require('./route/rest/service/v1/CategoriesRouter');
+const Hapi = require('hapi');
 const path = require('path');
 
 const DEFAULT_CONFIG = {
@@ -10,7 +10,7 @@ class Server {
   constructor(config) {
     this.config = Object.assign(DEFAULT_CONFIG, config);
 
-    this.app = express();
+    // this.app = express();
     this.server = undefined;
 
     this.init();
@@ -22,15 +22,15 @@ class Server {
 
   routes() {
     const PUBLIC_DIR = path.join(__dirname, 'public');
-    this.app.use(express.static(PUBLIC_DIR));
-    this.app.use(CategoriesRouter);
+    // this.app.use(express.static(PUBLIC_DIR));
+    // this.app.use(CategoriesRouter);
   }
 
   start(callback) {
     if (this.server) {
       callback();
     } else {
-      this.server = this.app.listen(this.config.PORT, () => callback(this.config.PORT));
+      // this.server = this.app.listen(this.config.PORT, () => callback(this.config.PORT));
     }
   }
 
