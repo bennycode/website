@@ -1,6 +1,4 @@
 const Hapi = require('hapi');
-const inert = require('inert');
-const path = require('path');
 
 const DEFAULT_CONFIG = {
   PORT: 8080
@@ -30,7 +28,9 @@ class Server {
       this.server = new Hapi.Server();
       this.server.connection({port: this.config.PORT});
 
-      this.server.register([inert], (error) => {
+      this.server.register({
+        register: require('inert')
+      }, (error) => {
         if (error) throw error;
         this.init();
         this.server.start((error) => {
