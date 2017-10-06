@@ -17,21 +17,8 @@ class Server {
   }
 
   routes() {
-    const PUBLIC_DIR = path.join(__dirname, 'public');
-
-    this.server.route({
-      method: 'GET',
-      path: '/{param*}',
-      handler: {
-        directory: {
-          index: true,
-          listing: false,
-          path: PUBLIC_DIR
-        }
-      }
-    });
-
     this.server.route([
+      require('./route/IndexRouter'),
       require('./route/rest/service/v1/CategoriesRouter')
     ]);
   }
