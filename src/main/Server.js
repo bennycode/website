@@ -1,5 +1,5 @@
-const CategoriesRouter = require('./route/rest/service/v1/CategoriesRouter');
-const express = require('express');
+const Hapi = require('hapi');
+const inert = require('inert');
 const path = require('path');
 
 const DEFAULT_CONFIG = {
@@ -9,11 +9,7 @@ const DEFAULT_CONFIG = {
 class Server {
   constructor(config) {
     this.config = Object.assign(DEFAULT_CONFIG, config);
-
-    this.app = express();
     this.server = undefined;
-
-    this.init();
   }
 
   init() {
@@ -21,23 +17,37 @@ class Server {
   }
 
   routes() {
-    const PUBLIC_DIR = path.join(__dirname, 'public');
-    this.app.use(express.static(PUBLIC_DIR));
-    this.app.use(CategoriesRouter);
+    this.server.route([
+      require('./route/IndexRouter'),
+      require('./route/rest/service/v1/CategoriesRouter')
+    ]);
   }
 
   start(callback) {
     if (this.server) {
       callback();
     } else {
-      this.server = this.app.listen(this.config.PORT, () => callback(this.config.PORT));
+      this.server = new Hapi.Server();
+      this.server.connection({port: this.config.PORT});
+
+      this.server.register([inert], (error) => {
+        if (error) throw error;
+        this.init();
+        this.server.start((error) => {
+          if (error) throw error;
+          callback(this.server.info.port);
+        });
+      });
     }
   }
 
   stop(callback) {
     if (this.server) {
-      this.server.close(callback);
-      this.server = undefined;
+      this.server.stop({timeout: 1000}, (error) => {
+        if (error) throw error;
+        this.server = undefined;
+        callback();
+      });
     } else {
       callback();
     }

@@ -11,7 +11,13 @@ class App extends React.Component {
   }
 
   componentWillMount() {
+    function handleErrors(response) {
+      if (!response.ok) throw new Error(response.statusText);
+      return response;
+    }
+
     window.fetch('/rest/service/v1/categories')
+      .then(handleErrors)
       .then((response) => response.json())
       .then((categories) => this.setState({...this.state, categories}));
   }
