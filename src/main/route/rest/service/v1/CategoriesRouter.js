@@ -1,12 +1,13 @@
-const database = require('../../../../connection/database');
-
-const getCategories = () => database.select().table('categories');
+const Category = require('../../../../models/Category');
 
 module.exports = {
   method: 'GET',
   path: '/rest/service/v1/categories',
   config: {
-    handler: (request, reply) => getCategories().then(reply)
+    handler: (request, reply) => Category
+      .query()
+      .then((categories) => categories.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())))
+      .then(reply)
   }
 };
 
