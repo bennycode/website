@@ -28,9 +28,18 @@ class CategoriesRouter {
   }
 
   handler(request, reply) {
-    return this.queryCategories()
+    console.log('THIS', this);
+    Promise.resolve()
+      .then(() => {
+        const cachedResponse = this.cache.get(CategoriesRouter.PATH.V1_CATEGORIES);
+        console.log('CACHE', cachedResponse);
+        return (cachedResponse) ? cachedResponse : this.queryCategories();
+      })
       .then((categories) => this.filterCategories(categories))
-      .then(reply);
+      .then((filteredCategories) => {
+        this.cache.set(CategoriesRouter.PATH.V1_CATEGORIES, filteredCategories);
+        reply(filteredCategories);
+      });
   }
 }
 
