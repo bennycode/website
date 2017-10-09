@@ -1,5 +1,5 @@
 const request = require('request');
-const Server = require('../../main/Server');
+const Server = require('../../main/backend/server/Server');
 
 describe('Server', () => {
   let server = undefined;

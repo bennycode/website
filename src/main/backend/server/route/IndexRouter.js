@@ -8,7 +8,7 @@ module.exports = {
       directory: {
         index: true,
         listing: false,
-        path: path.join(process.cwd(), 'src', 'main', 'public')
+        path: path.join(process.cwd(), 'dist', 'frontend')
       }
     }
   }
