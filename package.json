@@ -16,8 +16,7 @@
     "react-dom": "16.0.0",
     "rimraf": "2.6.2",
     "sqlite3": "3.1.13",
-    "webpack": "3.6.0",
-    "wire-webapp-lru-cache": "2.0.0"
+    "webpack": "3.6.0"
   },
   "devDependencies": {
     "concurrently": "3.5.0",

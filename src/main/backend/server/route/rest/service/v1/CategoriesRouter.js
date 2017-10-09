@@ -1,5 +1,4 @@
 const Category = require('../../../../models/Category');
-const LRUCache = require('wire-webapp-lru-cache');
 
 class CategoriesRouter {
   static get PATH() {
@@ -9,7 +8,9 @@ class CategoriesRouter {
   }
 
   constructor() {
-    this.cache = new LRUCache(1);
+    this.cache = {
+      [CategoriesRouter.PATH.V1_CATEGORIES]: null
+    };
     this.handler = this.handler.bind(this);
   }
 
@@ -30,14 +31,11 @@ class CategoriesRouter {
   handler(request, reply) {
     const categories = Promise.resolve()
       .then(() => {
-        const cachedResponse = this.cache.get(CategoriesRouter.PATH.V1_CATEGORIES);
+        const cachedResponse = this.cache[CategoriesRouter.PATH.V1_CATEGORIES];
         return (cachedResponse) ? cachedResponse : this.queryCategories();
       })
       .then((categories) => this.filterCategories(categories))
-      .then((filteredCategories) => {
-        this.cache.set(CategoriesRouter.PATH.V1_CATEGORIES, filteredCategories);
-        return filteredCategories;
-      });
+      .then((filteredCategories) =>(this.cache[CategoriesRouter.PATH.V1_CATEGORIES] = filteredCategories));
 
     return reply(categories);
   }
