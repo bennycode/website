@@ -1,18 +1,41 @@
 const Category = require('../../../../models/Category');
+const LRUCache = require('wire-webapp-lru-cache');
 
-module.exports = {
-  method: 'GET',
-  path: '/rest/service/v1/categories',
-  config: {
-    handler: (request, reply) => Category
+class CategoriesRouter {
+  static get PATH() {
+    return {
+      V1_CATEGORIES: '/rest/service/v1/categories'
+    }
+  }
+
+  constructor() {
+    this.cache = new LRUCache(1);
+    this.handler = this.handler.bind(this);
+  }
+
+  fetchCategories() {
+    return Category
       .query()
       .select([
         'id',
         'color',
         'name'
-      ])
-      .then((categories) => categories.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())))
-      .then(reply)
+      ]);
+  }
+
+  filterCategories(categories) {
+    return categories.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+  }
+
+  handler(request, reply) {
+    return this.fetchCategories().then((categories) => this.filterCategories(categories)).then(reply);
+  }
+}
+
+module.exports = {
+  method: 'GET',
+  path: CategoriesRouter.PATH.V1_CATEGORIES,
+  config: {
+    handler: new CategoriesRouter().handler
   }
 };
-
