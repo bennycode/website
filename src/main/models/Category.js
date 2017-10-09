@@ -1,8 +1,6 @@
-const knex = require('../connection/knex');
-const Model = require('objection').Model;
-Model.knex(knex);
+const BaseModel = require('./BaseModel');
 
-class Category extends Model {
+class Category extends BaseModel {
   static get tableName() {
     return 'categories';
   }
