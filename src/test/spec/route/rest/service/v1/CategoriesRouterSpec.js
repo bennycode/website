@@ -39,7 +39,7 @@ describe('CategoriesRouter', () => {
       ]).then(() => {
         expect(server.router.categories.queryCategories).toHaveBeenCalledTimes(1);
         done();
-      });
+      }).catch(done.fail);
     });
   });
 });

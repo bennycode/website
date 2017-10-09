@@ -28,18 +28,18 @@ class CategoriesRouter {
   }
 
   handler(request, reply) {
-    console.log('THIS', this);
-    Promise.resolve()
+    const categories = Promise.resolve()
       .then(() => {
         const cachedResponse = this.cache.get(CategoriesRouter.PATH.V1_CATEGORIES);
-        console.log('CACHE', cachedResponse);
         return (cachedResponse) ? cachedResponse : this.queryCategories();
       })
       .then((categories) => this.filterCategories(categories))
       .then((filteredCategories) => {
         this.cache.set(CategoriesRouter.PATH.V1_CATEGORIES, filteredCategories);
-        reply(filteredCategories);
+        return filteredCategories;
       });
+
+    return reply(categories);
   }
 }
 
