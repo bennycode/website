@@ -13,7 +13,7 @@ class CategoriesRouter {
     this.handler = this.handler.bind(this);
   }
 
-  fetchCategories() {
+  queryCategories() {
     return Category
       .query()
       .select([
@@ -28,14 +28,8 @@ class CategoriesRouter {
   }
 
   handler(request, reply) {
-    return this.fetchCategories().then((categories) => this.filterCategories(categories)).then(reply);
+    return this.queryCategories().then((categories) => this.filterCategories(categories)).then(reply);
   }
 }
 
-module.exports = {
-  method: 'GET',
-  path: CategoriesRouter.PATH.V1_CATEGORIES,
-  config: {
-    handler: new CategoriesRouter().handler
-  }
-};
+module.exports = CategoriesRouter;

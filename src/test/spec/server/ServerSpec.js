@@ -5,7 +5,7 @@ describe('Server', () => {
   let server = undefined;
 
   const SERVER_PORT = 8072;
-  const BASE_URL = `http://localhost:${SERVER_PORT}/`;
+  const BASE_URL = `http://localhost:${SERVER_PORT}`;
 
   afterEach((done) => server && server.stop(done));
 
@@ -14,6 +14,7 @@ describe('Server', () => {
       server = new Server({PORT: SERVER_PORT});
       server.start(() => {
         request.get(BASE_URL, (error, response) => {
+          if (error) return done.fail(error);
           expect(response.statusCode).toBe(200);
           done();
         });

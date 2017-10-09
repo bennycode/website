@@ -1,3 +1,4 @@
+const CategoriesRouter = require('./route/rest/service/v1/CategoriesRouter');
 const Hapi = require('hapi');
 
 const DEFAULT_CONFIG = {
@@ -7,17 +8,20 @@ const DEFAULT_CONFIG = {
 class Server {
   constructor(config) {
     this.config = Object.assign(DEFAULT_CONFIG, config);
+    this.router = {
+      categories: new CategoriesRouter()
+    };
     this.server = undefined;
   }
 
   init() {
-    this.routes();
+    this.initRoutes();
   }
 
-  routes() {
+  initRoutes() {
     this.server.route([
       require('./route/IndexRouter'),
-      require('./route/rest/service/v1/CategoriesRouter')
+      {method: 'GET', path: CategoriesRouter.PATH.V1_CATEGORIES, config: {handler: this.router.categories.handler}}
     ]);
   }
 
