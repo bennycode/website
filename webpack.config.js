@@ -1,6 +1,6 @@
 module.exports = {
   devServer: {
-    contentBase: `${__dirname}/src/main/public`,
+    contentBase: `${__dirname}/dist/frontend`,
     historyApiFallback: true,
     port: 8081,
     proxy: {
@@ -9,7 +9,7 @@ module.exports = {
   },
   entry: `${__dirname}/src/main/frontend/index.jsx`,
   output: {
-    path: `${__dirname}/src/main/public/js`,
+    path: `${__dirname}/dist/frontend/js`,
     publicPath: '/js',
     filename: 'index.js'
   },

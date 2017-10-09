@@ -5,10 +5,10 @@ const development = {
   },
   migrations: {
     tableName: 'knex_migrations',
-    directory: './src/main/migrations'
+    directory: './src/main/backend/database/migrations'
   },
   seeds: {
-    directory: './src/test/seeds'
+    directory: './src/test/backend/database/seeds'
   },
   useNullAsDefault: true,
 };
@@ -24,14 +24,14 @@ const production = {
   connection: `${process.env.DATABASE_URL}?ssl=true`,
   migrations: {
     tableName: 'knex_migrations',
-    directory: './src/main/migrations'
+    directory: './src/main/backend/database/migrations'
   },
   pool: {
     min: 2,
     max: 5
   },
   seeds: {
-    directory: './src/main/seeds'
+    directory: './src/main/backend/database/seeds'
   },
 };
 
