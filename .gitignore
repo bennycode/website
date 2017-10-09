@@ -1,10 +1,16 @@
-/.idea
-/.yarnclean
-/bower_components
-/coverage
-/dist/frontend/js
+# WebStorm Project: http://devnet.jetbrains.com/docs/DOC-1186
+/.idea/**/*.xml
+!/.idea/codeStyleSettings.xml
+!/.idea/modules.xml
+
+# Node Package Manager
 /node_modules
 /npm-debug.log*
+
+# Generated Files
+/coverage
+/dist/frontend/js
+
+# Temporary Files
 /temp/**/*
 !/temp/.gitkeep
-/yarn.lock
