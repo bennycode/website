@@ -28,7 +28,9 @@ class CategoriesRouter {
   }
 
   handler(request, reply) {
-    return this.queryCategories().then((categories) => this.filterCategories(categories)).then(reply);
+    return this.queryCategories()
+      .then((categories) => this.filterCategories(categories))
+      .then(reply);
   }
 }
 

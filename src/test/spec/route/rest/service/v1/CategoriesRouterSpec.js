@@ -17,7 +17,7 @@ describe('CategoriesRouter', () => {
 
   describe('handler', () => {
     it('caches database requests', (done) => {
-      spyOn(server.router.categories, 'queryCategories');
+      spyOn(server.router.categories, 'queryCategories').and.callThrough();
       const url = `${BASE_URL}${CategoriesRouter.PATH.V1_CATEGORIES}`;
       request.get(url, (error, response) => {
         if (error) return done.fail(error);
