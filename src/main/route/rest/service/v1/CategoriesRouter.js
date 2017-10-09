@@ -6,6 +6,11 @@ module.exports = {
   config: {
     handler: (request, reply) => Category
       .query()
+      .select([
+        'id',
+        'color',
+        'name'
+      ])
       .then((categories) => categories.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())))
       .then(reply)
   }
