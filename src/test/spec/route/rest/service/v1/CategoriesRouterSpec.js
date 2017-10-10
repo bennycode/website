@@ -15,37 +15,20 @@ describe('CategoriesRouter', () => {
   describe('handler', () => {
     it('caches database requests', done => {
       spyOn(server.router.categories, 'queryCategories').and.callThrough();
-      const url = `${TestHelper.SERVER.BASE_URL}${CategoriesRouter.PATH
-        .V1_CATEGORIES}`;
+      const url = `${TestHelper.SERVER.BASE_URL}${CategoriesRouter.PATH.V1_CATEGORIES}`;
 
       Promise.resolve()
         .then(() => TestHelper.promiseRequest(url))
-        .then(() =>
-          expect(
-            server.router.categories.queryCategories
-          ).toHaveBeenCalledTimes(1)
-        )
+        .then(() => expect(server.router.categories.queryCategories).toHaveBeenCalledTimes(1))
         .then(() => TestHelper.promiseRequest(url))
-        .then(() =>
-          expect(
-            server.router.categories.queryCategories
-          ).toHaveBeenCalledTimes(1)
-        )
+        .then(() => expect(server.router.categories.queryCategories).toHaveBeenCalledTimes(1))
         .then(() => TestHelper.promiseRequest(url))
-        .then(() =>
-          expect(
-            server.router.categories.queryCategories
-          ).toHaveBeenCalledTimes(1)
-        )
+        .then(() => expect(server.router.categories.queryCategories).toHaveBeenCalledTimes(1))
         .then(() => {
           server.router.categories.resetCache();
           return TestHelper.promiseRequest(url);
         })
-        .then(() =>
-          expect(
-            server.router.categories.queryCategories
-          ).toHaveBeenCalledTimes(2)
-        )
+        .then(() => expect(server.router.categories.queryCategories).toHaveBeenCalledTimes(2))
         .then(() => done())
         .catch(done.fail);
     });

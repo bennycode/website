@@ -21,9 +21,7 @@ class CategoriesRouter {
   }
 
   filterCategories(categories) {
-    return categories.sort((a, b) =>
-      a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-    );
+    return categories.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   }
 
   handler(request, reply) {
@@ -33,10 +31,7 @@ class CategoriesRouter {
         return cachedResponse ? cachedResponse : this.queryCategories();
       })
       .then(categories => this.filterCategories(categories))
-      .then(
-        filteredCategories =>
-          (this.cache[CategoriesRouter.PATH.V1_CATEGORIES] = filteredCategories)
-      );
+      .then(filteredCategories => (this.cache[CategoriesRouter.PATH.V1_CATEGORIES] = filteredCategories));
 
     return reply(categories);
   }
