@@ -57,7 +57,7 @@
     "dist": "npm run init:db && npm run dist:frontend",
     "init:db": "knex migrate:latest && knex seed:run",
     "lint:json": "prettier --single-quote --print-width=120 --write '**/*.json'",
-    "lint:script": "eslint --fix -c .eslintrc.yaml --ignore-path .gitignore **/*.js ",
+    "lint:script": "eslint --fix -c .eslintrc.yaml --ignore-path .gitignore src/**/*.{jsx,js}",
     "lint": "npm run lint:script && npm run lint:style && npm run lint:json",
     "postinstall": "npm run dist",
     "postversion": "git push && git push --tags",

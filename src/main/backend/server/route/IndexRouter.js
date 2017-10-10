@@ -8,8 +8,8 @@ module.exports = {
       directory: {
         index: true,
         listing: false,
-        path: path.join(process.cwd(), 'dist', 'frontend')
-      }
-    }
-  }
+        path: path.join(process.cwd(), 'dist', 'frontend'),
+      },
+    },
+  },
 };
