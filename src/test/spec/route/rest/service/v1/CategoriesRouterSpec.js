@@ -32,14 +32,20 @@ describe('CategoriesRouter', () => {
       spyOn(server.router.categories, 'queryCategories').and.callThrough();
       const url = `${BASE_URL}${CategoriesRouter.PATH.V1_CATEGORIES}`;
 
-      Promise.all([
-        promiseRequest(url),
-        promiseRequest(url),
-        promiseRequest(url),
-      ]).then(() => {
-        expect(server.router.categories.queryCategories).toHaveBeenCalledTimes(1);
-        done();
-      }).catch(done.fail);
+      Promise.resolve()
+        .then(() => promiseRequest(url))
+        .then(() => expect(server.router.categories.queryCategories).toHaveBeenCalledTimes(1))
+        .then(() => promiseRequest(url))
+        .then(() => expect(server.router.categories.queryCategories).toHaveBeenCalledTimes(1))
+        .then(() => promiseRequest(url))
+        .then(() => expect(server.router.categories.queryCategories).toHaveBeenCalledTimes(1))
+        .then(() => {
+          server.router.categories.resetCache();
+          return promiseRequest(url);
+        })
+        .then(() => expect(server.router.categories.queryCategories).toHaveBeenCalledTimes(2))
+        .then(() => done())
+        .catch(done.fail);
     });
   });
 });

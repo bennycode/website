@@ -8,9 +8,7 @@ class CategoriesRouter {
   }
 
   constructor() {
-    this.cache = {
-      [CategoriesRouter.PATH.V1_CATEGORIES]: null
-    };
+    this.cache = {};
     this.handler = this.handler.bind(this);
   }
 
@@ -24,6 +22,10 @@ class CategoriesRouter {
       ]);
   }
 
+  resetCache() {
+    this.cache = {};
+  }
+
   filterCategories(categories) {
     return categories.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   }
@@ -35,7 +37,7 @@ class CategoriesRouter {
         return (cachedResponse) ? cachedResponse : this.queryCategories();
       })
       .then((categories) => this.filterCategories(categories))
-      .then((filteredCategories) =>(this.cache[CategoriesRouter.PATH.V1_CATEGORIES] = filteredCategories));
+      .then((filteredCategories) => (this.cache[CategoriesRouter.PATH.V1_CATEGORIES] = filteredCategories));
 
     return reply(categories);
   }
