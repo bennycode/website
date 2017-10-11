@@ -9,7 +9,6 @@ exports.up = (knex, Promise) => {
 
 exports.down = (knex, Promise) => {
   return Promise.all([
-    // Test!!!!!!
-    knex.schema.alterTable('categories', (table) => table.dropColumns('created_at', 'updated_at')),
+    knex.schema.alterTable('categories', (table) => table.dropColumns('created_at', 'updated_at'))
   ]);
 };
