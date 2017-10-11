@@ -5,7 +5,10 @@
     "es6": true,
     "node": true
   },
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "prettier"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -14,6 +17,7 @@
     "sourceType": "module"
   },
   "plugins": [
+    "prettier",
     "react"
   ],
   "rules": {
@@ -36,6 +40,7 @@
       "error",
       "last"
     ],
-    "complexity": "error"
+    "complexity": "error",
+    "prettier/prettier": "error"
   }
 }
