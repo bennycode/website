@@ -43,24 +43,23 @@
     "url": "git+https://github.com/welovecoding/website.git"
   },
   "lint-staged": {
-    "*.{json,js,jsx}": ["prettier --write", "git add"]
+    "*.{json,jsx}": ["prettier --write", "git add"]
   },
   "scripts": {
     "check": "nsp check --output summary",
     "coverage:backend":
       "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
-    "dist:frontend": "rimraf dist/frontend/js && webpack",
     "dist": "npm run init:db && npm run dist:frontend",
+    "dist:frontend": "rimraf dist/frontend/js && webpack",
     "init:db": "knex migrate:latest && knex seed:run",
-    "lint": "prettier --write '**/*.{json,js,jsx}'",
     "postinstall": "npm run dist",
-    "postversion": "git push && git push --tags",
     "precommit": "lint-staged",
     "preversion": "npm install && npm run dist && npm test",
+    "version": "npm run dist",
+    "postversion": "git push && git push --tags",
     "start": "npm run dist && concurrently \"nodemon index.js\" \"webpack-dev-server --hot --open\"",
-    "test:backend": "cross-env NODE_ENV=test JASMINE_CONFIG_PATH=src/test/support/jasmine.json jasmine",
     "test": "cross-env NODE_ENV=test npm run dist && npm run test:backend",
-    "version": "npm run dist"
+    "test:backend": "cross-env NODE_ENV=test JASMINE_CONFIG_PATH=src/test/support/jasmine.json jasmine"
   },
   "version": "1.0.26"
 }
