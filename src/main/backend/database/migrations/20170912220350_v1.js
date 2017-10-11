@@ -10,6 +10,6 @@ exports.up = (knex, Promise) => {
 
 exports.down = (knex, Promise) => {
   return Promise.all([
-    knex.schema.dropTableIfExists('categories')
+    knex.schema.dropTableIfExists('categories'),
   ]);
 };
