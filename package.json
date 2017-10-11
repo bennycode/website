@@ -22,10 +22,13 @@
     "concurrently": "3.5.0",
     "cross-env": "5.0.5",
     "dotenv": "4.0.0",
+    "husky": "0.14.3",
     "istanbul": "0.4.5",
     "jasmine": "2.8.0",
+    "lint-staged": "4.2.3",
     "nodemon": "1.12.1",
     "nsp": "2.8.1",
+    "prettier": "1.7.4",
     "request": "2.83.0",
     "webpack-dev-server": "2.9.1"
   },
@@ -39,6 +42,12 @@
     "type": "git",
     "url": "git+https://github.com/welovecoding/website.git"
   },
+  "lint-staged": {
+    "src/main/frontend/**/*.{json,jsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "scripts": {
     "check": "nsp check --output summary",
     "coverage:backend": "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
@@ -46,6 +55,9 @@
     "dist:frontend": "rimraf dist/frontend/js && webpack",
     "init:db": "knex migrate:latest && knex seed:run",
     "postinstall": "npm run dist",
+    "lint": "npm run lint:frontend",
+    "lint:frontend": "prettier --write \"src/main/frontend/**/*.{json,jsx}\"",
+    "precommit": "lint-staged",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",
     "postversion": "git push && git push --tags",

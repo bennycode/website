@@ -1,6 +1,7 @@
 # WebStorm Project: http://devnet.jetbrains.com/docs/DOC-1186
 /.idea/**/*.xml
 !/.idea/codeStyleSettings.xml
+!/.idea/misc.xml
 !/.idea/modules.xml
 
 # Node Package Manager
