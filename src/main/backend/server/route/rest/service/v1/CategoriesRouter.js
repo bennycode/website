@@ -3,7 +3,7 @@ const Category = require('../../../../models/Category');
 class CategoriesRouter {
   static get PATH() {
     return {
-      V1_CATEGORIES: '/rest/service/v1/categories'
+      V1_CATEGORIES: '/rest/service/v1/categories',
     }
   }
 
@@ -18,7 +18,7 @@ class CategoriesRouter {
       .select([
         'id',
         'color',
-        'name'
+        'name',
       ]);
   }
 

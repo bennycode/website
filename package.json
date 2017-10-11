@@ -58,6 +58,7 @@
     "init:db": "knex migrate:latest && knex seed:run",
     "postinstall": "npm run dist",
     "lint": "npm run lint:frontend",
+    "lint:backend": "eslint src/main/backend --fix",
     "lint:frontend": "prettier --write \"src/main/frontend/**/*.{json,jsx}\"",
     "precommit": "lint-staged",
     "preversion": "npm install && npm run dist && npm test",

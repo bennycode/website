@@ -2,14 +2,14 @@ const CategoriesRouter = require('./route/rest/service/v1/CategoriesRouter');
 const Hapi = require('hapi');
 
 const DEFAULT_CONFIG = {
-  PORT: 8080
+  PORT: 8080,
 };
 
 class Server {
   constructor(config) {
     this.config = Object.assign(DEFAULT_CONFIG, config);
     this.router = {
-      categories: new CategoriesRouter()
+      categories: new CategoriesRouter(),
     };
     this.server = undefined;
   }
@@ -21,7 +21,7 @@ class Server {
   initRoutes() {
     this.server.route([
       require('./route/IndexRouter'),
-      {method: 'GET', path: CategoriesRouter.PATH.V1_CATEGORIES, config: {handler: this.router.categories.handler}}
+      {method: 'GET', path: CategoriesRouter.PATH.V1_CATEGORIES, config: {handler: this.router.categories.handler}},
     ]);
   }
 
@@ -33,7 +33,7 @@ class Server {
       this.server.connection({port: this.config.PORT});
 
       this.server.register({
-        register: require('inert')
+        register: require('inert'),
       }, (error) => {
         if (error) throw error;
         this.init();
