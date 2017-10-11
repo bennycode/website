@@ -45,6 +45,10 @@
     "url": "git+https://github.com/welovecoding/website.git"
   },
   "lint-staged": {
+    "src/main/backend/**/*.{js}": [
+      "npm run lint:backend",
+      "git add"
+    ],
     "src/main/frontend/**/*.{json,jsx}": [
       "prettier --write",
       "git add"
