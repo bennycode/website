@@ -64,7 +64,7 @@
     "lint": "npm run lint:backend && npm run lint:frontend",
     "lint:backend": "eslint src/main/backend --fix",
     "lint:frontend": "prettier --write \"src/main/frontend/**/*.{json,jsx}\"",
-    "precommit": "lint",
+    "precommit": "npm run lint",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",
     "postversion": "git push && git push --tags",
