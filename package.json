@@ -43,7 +43,7 @@
     "url": "git+https://github.com/welovecoding/website.git"
   },
   "lint-staged": {
-    "*.{json,jsx}": [
+    "{src}/**/*.{json,jsx}": [
       "prettier --write",
       "git add"
     ]
