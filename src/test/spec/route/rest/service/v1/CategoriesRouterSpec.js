@@ -5,15 +5,15 @@ const TestHelper = require('../../../../../helpers/TestHelper');
 describe('CategoriesRouter', () => {
   let server = undefined;
 
-  beforeAll(done => {
+  beforeAll((done) => {
     server = new Server({PORT: TestHelper.SERVER.PORT});
     server.start(() => done());
   });
 
-  afterAll(done => server && server.stop(done));
+  afterAll((done) => server && server.stop(done));
 
   describe('handler', () => {
-    it('caches database requests', done => {
+    it('caches database requests', (done) => {
       spyOn(server.router.categories, 'queryCategories').and.callThrough();
       const url = `${TestHelper.SERVER.BASE_URL}${CategoriesRouter.PATH.V1_CATEGORIES}`;
 

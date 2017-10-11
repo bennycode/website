@@ -7,8 +7,8 @@ class TestHelper {
 
     return {
       BASE_URL,
-      PORT,
-    };
+      PORT
+    }
   }
 
   static promiseRequest(url) {

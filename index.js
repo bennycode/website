@@ -7,4 +7,4 @@ process.on('SIGINT', () => {
   server.stop(() => console.log('Stopped server because of "SIGINT" signal.'));
 });
 
-server.start(port => console.log(`Server is running on port "${port}".`));
+server.start((port) => console.log(`Server is running on port "${port}".`));
