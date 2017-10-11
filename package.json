@@ -54,6 +54,7 @@
     "dist": "npm run init:db && npm run dist:frontend",
     "dist:frontend": "rimraf dist/frontend/js && webpack",
     "init:db": "knex migrate:latest && knex seed:run",
+    "lint:script": "prettier --write \"**/*.{js,jsx}\"",
     "postinstall": "npm run dist",
     "precommit": "lint-staged",
     "preversion": "npm install && npm run dist && npm test",
