@@ -1,8 +1,8 @@
 const createReactClass = require('create-react-class');
 
-const FetchHelper = createReactClass({
+const FetchUtil = createReactClass({
   statics: {
-    handleErrors: function(response) {
+    handleError: function(response) {
       if (!response.ok) throw new Error(response.statusText);
       return response;
     },
@@ -11,4 +11,4 @@ const FetchHelper = createReactClass({
   },
 });
 
-export default FetchHelper;
+export default FetchUtil;

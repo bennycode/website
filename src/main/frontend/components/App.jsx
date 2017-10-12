@@ -1,5 +1,5 @@
 import Categories from './Categories.jsx';
-import FetchHelper from '../helpers/FetchHelper';
+import FetchUtil from '../utils/FetchUtil';
 import Grid from 'material-ui/Grid';
 import React from 'react';
 
@@ -12,7 +12,7 @@ class App extends React.Component {
   componentWillMount() {
     window
       .fetch('/rest/service/v1/categories')
-      .then(FetchHelper.handleErrors)
+      .then(FetchUtil.handleError)
       .then(response => response.json())
       .then(categories => this.setState({...this.state, categories}));
   }

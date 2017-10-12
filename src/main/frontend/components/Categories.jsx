@@ -1,4 +1,4 @@
-import FetchHelper from '../helpers/FetchHelper';
+import FetchUtil from '../utils/FetchUtil';
 import List, {ListItem, ListItemText} from 'material-ui/List';
 import React from 'react';
 
@@ -6,7 +6,7 @@ class Categories extends React.Component {
   clickOnCategory(category) {
     window
       .fetch(`/rest/service/v1/categories/${category.id}`)
-      .then(FetchHelper.handleErrors)
+      .then(FetchUtil.handleError)
       .then(response => response.json())
       .then(console.log);
   }
