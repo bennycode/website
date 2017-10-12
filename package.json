@@ -6,7 +6,7 @@
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
     "forever": "0.15.3",
-    "hapi": "16.6.2",
+    "hapi": "17.0.0-rc6",
     "inert": "4.2.1",
     "joi": "11.3.4",
     "knex": "0.13.0",
