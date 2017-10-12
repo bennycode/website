@@ -23,5 +23,31 @@ exports.seed = (knex, Promise) => {
       {"id": 19, "name": "Visual Basic", "color": "#0099CC", "created_at": knex.fn.now(), "updated_at": knex.fn.now()},
       {"id": 20, "name": "Delphi", "color": "#7B9FCF", "created_at": knex.fn.now(), "updated_at": knex.fn.now()},
     ]),
+    knex('languages').del(),
+    knex('languages').insert([
+      {"id": 1, "code": "en"},
+      {"id": 2, "code": "de"},
+    ]),
+    knex('providers').del(),
+    knex('providers').insert([
+      {"id": 1, "name": "YouTube"},
+      {"id": 2, "name": "Vimeo"},
+    ]),
+    knex('playlists').del(),
+    knex('playlists').insert([
+      {
+        "category_id": 2,
+        "code": "F544CEEC9432BF67",
+        "created_at": "2013-12-31 12:17:10.0",
+        "description": "In diesen Videos wird gezeigt, wie man die Verbindung zu einer MySQL-Datenbank herstellt und Persistent Entites generiert. Außerdem wird gezeigt, wie auf diese Persistent Entities über eine Session Bean innerhalb eines Web-Servlets zugegriffen werden kann.",
+        "enabled": true,
+        "id": 5,
+        "language_id": 2,
+        "name": "Praktischer Einstieg in die Java Enterprise Edition (JEE)",
+        "provider_id": 1,
+        "slug": "praktischer-einstieg-in-die-java-enterprise-edition-jee",
+        "updated_at": "2013-12-31 12:17:10.0",
+      },
+    ]),
   ]);
 };
