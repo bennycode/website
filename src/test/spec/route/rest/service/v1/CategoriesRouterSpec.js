@@ -12,7 +12,7 @@ describe('CategoriesRouter', () => {
 
   afterAll((done) => server && server.stop(done));
 
-  describe('handler', () => {
+  describe('getCategories', () => {
     it('caches database requests', (done) => {
       spyOn(server.router.categories, 'queryCategories').and.callThrough();
       const url = `${TestHelper.SERVER.BASE_URL}${CategoriesRouter.PATH.V1_CATEGORIES}`;

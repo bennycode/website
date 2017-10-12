@@ -5,7 +5,7 @@ import React from 'react';
 class Categories extends React.Component {
   clickOnCategory(category) {
     window
-      .fetch(`/rest/service/v1/categories/${category.id}`)
+      .fetch(`/rest/service/v1/category/${category.id}`)
       .then(FetchUtil.handleError)
       .then(response => response.json())
       .then(console.log);
