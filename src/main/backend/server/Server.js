@@ -1,5 +1,6 @@
 const CategoriesRouter = require('./route/rest/service/v1/CategoriesRouter');
 const Hapi = require('hapi');
+const Joi = require('joi');
 
 const DEFAULT_CONFIG = {
   PORT: 8080,
@@ -31,6 +32,11 @@ class Server {
         path: `${CategoriesRouter.PATH.V1_CATEGORY}/{category_id}`,
         config: {
           handler: this.router.categories.getPlaylists,
+          validate: {
+            params: {
+              category_id: Joi.number().required(),
+            },
+          },
         },
       },
     ]);

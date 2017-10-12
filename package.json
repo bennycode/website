@@ -8,6 +8,7 @@
     "forever": "0.15.3",
     "hapi": "16.6.2",
     "inert": "4.2.1",
+    "joi": "11.3.4",
     "knex": "0.13.0",
     "material-ui": "1.0.0-beta.16",
     "objection": "0.8.9",
