@@ -50,6 +50,7 @@ class CategoriesRouter {
         'id',
         'color',
         'name',
+        'slug'
       ]);
   }
 
