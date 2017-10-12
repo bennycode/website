@@ -13,14 +13,7 @@ class CategoriesRouter {
   }
 
   queryCategories() {
-    return Category.query().select([
-      'id',
-      'color',
-      'name',
-      'aaaaaaaaaaaaaaaaaaaaaaaaaaa',
-      'abc',
-      'aaaaaaaaaaaaaaaaaaaaaaaaaaa',
-    ]);
+    return Category.query().select(['id', 'color', 'name']);
   }
 
   resetCache() {
