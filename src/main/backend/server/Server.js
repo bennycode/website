@@ -1,6 +1,7 @@
 const CategoriesRouter = require('./route/rest/service/v1/CategoriesRouter');
 const Hapi = require('hapi');
 const Joi = require('joi');
+const path = require('path');
 
 const DEFAULT_CONFIG = {
   PORT: 8080,
@@ -21,7 +22,32 @@ class Server {
 
   initRoutes() {
     this.server.route([
-      require('./route/IndexRouter'),
+      {
+        method: 'GET',
+        path: '/{param*}',
+        config: {
+          handler: {
+            directory: {
+              index: true,
+              listing: false,
+              path: path.join(process.cwd(), 'dist', 'frontend'),
+            },
+          },
+        },
+      },
+      {
+        method: 'GET',
+        path: '/tutorials/{category_slug}',
+        config: {
+          handler: {
+            directory: {
+              index: true,
+              listing: false,
+              path: path.join(process.cwd(), 'dist', 'frontend'),
+            },
+          },
+        },
+      },
       {
         method: 'GET',
         path: CategoriesRouter.PATH.V1_CATEGORIES,
