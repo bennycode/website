@@ -15,7 +15,7 @@ class Categories extends React.Component {
   renderListItems() {
     return this.props.categories.map(category => {
       return (
-        <Router>
+        <Router key={category.id}>
           <ListItem button={true} component={Link} key={category.id} to={`/tutorials/${category.name}`}>
             <ListItemText primary={category.name} />
           </ListItem>
