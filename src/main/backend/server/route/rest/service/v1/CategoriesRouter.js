@@ -4,7 +4,7 @@ class CategoriesRouter {
   static get PATH() {
     return {
       V1_CATEGORIES: '/rest/service/v1/categories',
-    }
+    };
   }
 
   constructor() {
@@ -13,13 +13,7 @@ class CategoriesRouter {
   }
 
   queryCategories() {
-    return Category
-      .query()
-      .select([
-        'id',
-        'color',
-        'name',
-      ]);
+    return Category.query().select(['id', 'color', 'name']);
   }
 
   resetCache() {
@@ -34,10 +28,10 @@ class CategoriesRouter {
     const categories = Promise.resolve()
       .then(() => {
         const cachedResponse = this.cache[CategoriesRouter.PATH.V1_CATEGORIES];
-        return (cachedResponse) ? cachedResponse : this.queryCategories();
+        return cachedResponse ? cachedResponse : this.queryCategories();
       })
-      .then((categories) => this.filterCategories(categories))
-      .then((filteredCategories) => (this.cache[CategoriesRouter.PATH.V1_CATEGORIES] = filteredCategories));
+      .then(categories => this.filterCategories(categories))
+      .then(filteredCategories => (this.cache[CategoriesRouter.PATH.V1_CATEGORIES] = filteredCategories));
 
     return reply(categories);
   }

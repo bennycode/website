@@ -6,7 +6,9 @@
     "jasmine": true,
     "node": true
   },
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -15,9 +17,14 @@
     "sourceType": "module"
   },
   "plugins": [
+    "prettier",
     "react"
   ],
   "rules": {
+    "array-bracket-newline": [
+      "error",
+      "always"
+    ],
     "brace-style": [
       "error",
       "1tbs"
@@ -37,6 +44,12 @@
       "error",
       "last"
     ],
-    "complexity": "error"
+    "complexity": "error",
+    "newline-per-chained-call": [
+      "error",
+      {
+        "ignoreChainWithDepth": 10
+      }
+    ]
   }
 }
