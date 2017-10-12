@@ -21,7 +21,7 @@ exports.seed = (knex, Promise) => {
       {"id": 17, "name": "Objective-C", "color": "#999999", "created_at": knex.fn.now(), "updated_at": knex.fn.now()},
       {"id": 18, "name": "Linux", "color": "#669900", "created_at": knex.fn.now(), "updated_at": knex.fn.now()},
       {"id": 19, "name": "Visual Basic", "color": "#0099CC", "created_at": knex.fn.now(), "updated_at": knex.fn.now()},
-      {"id": 20, "name": "Delphi", "color": "#7B9FCF", "created_at": knex.fn.now(), "updated_at": knex.fn.now()}
-    ])
+      {"id": 20, "name": "Delphi", "color": "#7B9FCF", "created_at": knex.fn.now(), "updated_at": knex.fn.now()},
+    ]),
   ]);
 };
