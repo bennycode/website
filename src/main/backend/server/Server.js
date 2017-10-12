@@ -21,7 +21,18 @@ class Server {
   initRoutes() {
     this.server.route([
       require('./route/IndexRouter'),
-      {method: 'GET', path: CategoriesRouter.PATH.V1_CATEGORIES, config: {handler: this.router.categories.handler}},
+      {
+        method: 'GET',
+        path: CategoriesRouter.PATH.V1_CATEGORIES,
+        config: {handler: this.router.categories.getCategories},
+      },
+      {
+        method: 'GET',
+        path: `${CategoriesRouter.PATH.V1_CATEGORY}/{category_id}`,
+        config: {
+          handler: this.router.categories.getPlaylists,
+        },
+      },
     ]);
   }
 
