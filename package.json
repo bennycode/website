@@ -47,12 +47,8 @@
     "url": "git+https://github.com/welovecoding/website.git"
   },
   "lint-staged": {
-    "src/**/*.{js}": [
-      "npm run lint:backend",
-      "git add"
-    ],
-    "src/**/*.{css,jsx,less,scss}": [
-      "prettier --write",
+    "src/**/*.{js, jsx}": [
+      "npm run lint",
       "git add"
     ]
   },
@@ -63,9 +59,7 @@
     "dist:frontend": "rimraf dist/frontend/js && webpack",
     "init:db": "knex migrate:latest && knex seed:run",
     "postinstall": "npm run dist",
-    "lint": "npm run lint:scripts && npm run lint:styles",
-    "lint:scripts": "eslint src --fix",
-    "lint:styles": "prettier --write \"src/**/*.{css,jsx,less,scss}\"",
+    "lint": "eslint src --fix",
     "precommit": "lint-staged",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",
