@@ -42,6 +42,7 @@
       "last"
     ],
     "complexity": "error",
+    "newline-per-chained-call": "off",
     "prettier/prettier": "error"
   }
 }
