@@ -17,22 +17,24 @@ class Categories extends React.Component {
   renderListItems() {
     return this.props.categories.map(category => {
       return (
-        <Router key={category.id}>
-          <Switch>
-            <Route exact={true} path="/">
-              <ListItem button={true} component={Link} key={category.id} to={`/tutorials/${category.slug}`}>
-                <ListItemText primary={category.name} />
-              </ListItem>
-            </Route>
-            <Route path="/tutorials/:category_slug" component={Gist} />
-          </Switch>
-        </Router>
+        <ListItem button={true} component={Link} key={category.id} to={`/tutorials/${category.slug}`}>
+          <ListItemText primary={category.name} />
+        </ListItem>
       );
     });
   }
 
   render() {
-    return <List dense={false}>{this.renderListItems()}</List>;
+    return (
+      <Router>
+        <Switch>
+          <Route exact={true} path="/">
+            <List dense={false}>{this.renderListItems()}</List>
+          </Route>
+          <Route path="/tutorials/:category_slug" component={Gist} />
+        </Switch>
+      </Router>
+    );
   }
 }
 
