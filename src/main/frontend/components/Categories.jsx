@@ -3,7 +3,7 @@ import List, {ListItem, ListItemText} from 'material-ui/List';
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 
-const Gist = match => <p>Huhu</p>;
+const Gist = ({match}) => <p>{match.params.category_slug}</p>;
 
 class Categories extends React.Component {
   clickOnCategory(category) {
