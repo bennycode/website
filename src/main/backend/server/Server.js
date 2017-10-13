@@ -39,12 +39,8 @@ class Server {
         method: 'GET',
         path: `${CategoriesRouter.PATH.PAGE_TUTORIALS}/{category_slug}`,
         config: {
-          handler: {
-            directory: {
-              index: true,
-              listing: false,
-              path: path.join(process.cwd(), 'dist', 'frontend'),
-            },
+          handler: (request, reply) => {
+            reply.file(path.join(process.cwd(), 'dist', 'frontend', 'index.html'));
           },
         },
       },
