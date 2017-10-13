@@ -22,12 +22,20 @@ class Playlists extends React.Component {
         .fetch(`/rest/service/v1/category/${category[0].id}`)
         .then(FetchUtil.handleError)
         .then(response => response.json())
-        .then(playlists => this.setState({...this.state, playlists}));
+        .then(playlists => {
+          if (this.refs.showPlaylists) {
+            this.setState({...this.state, playlists});
+          }
+        });
     }
   }
 
   render() {
-    return <List dense={false}>{this.renderListItems()}</List>;
+    return (
+      <List dense={false} ref="showPlaylists">
+        {this.renderListItems()}
+      </List>
+    );
   }
 
   renderListItems() {
