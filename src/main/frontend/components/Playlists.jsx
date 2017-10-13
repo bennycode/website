@@ -1,10 +1,14 @@
 import React from 'react';
 import FetchUtil from '../utils/FetchUtil';
 import PropTypes from 'prop-types';
+import List, {ListItem, ListItemText} from 'material-ui/List';
 
 class Playlists extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      playlists: [],
+    };
   }
 
   componentDidUpdate() {
@@ -18,12 +22,22 @@ class Playlists extends React.Component {
         .fetch(`/rest/service/v1/category/${category[0].id}`)
         .then(FetchUtil.handleError)
         .then(response => response.json())
-        .then(console.log);
+        .then(playlists => this.setState({...this.state, playlists}));
     }
   }
 
   render() {
-    return <p>{`Category Slug: ${this.context.categories}`}</p>;
+    return <List dense={false}>{this.renderListItems()}</List>;
+  }
+
+  renderListItems() {
+    return this.state.playlists.map(playlist => {
+      return (
+        <ListItem button={true} key={playlist.id}>
+          <ListItemText primary={playlist.name} />
+        </ListItem>
+      );
+    });
   }
 }
 
