@@ -1,7 +1,7 @@
-import React from 'react';
 import FetchUtil from '../utils/FetchUtil';
-import PropTypes from 'prop-types';
 import List, {ListItem, ListItemText} from 'material-ui/List';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 class Playlists extends React.Component {
   constructor(props, context) {
@@ -23,11 +23,11 @@ class Playlists extends React.Component {
     const categories = this.context.categories;
     const slug = this.props.match.params.category_slug;
 
-    const category = categories.filter(category => category.slug === slug);
+    const category = categories.filter(category => category.slug === slug)[0];
 
-    if (category.length > 0) {
+    if (category) {
       window
-        .fetch(`/rest/service/v1/category/${category[0].id}`)
+        .fetch(`/rest/service/v1/category/${category.id}`)
         .then(FetchUtil.handleError)
         .then(response => response.json())
         .then(playlists => {

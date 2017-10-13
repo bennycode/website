@@ -1,8 +1,8 @@
 import List, {ListItem, ListItemText} from 'material-ui/List';
 import Playlists from './Playlists.jsx';
+import PropTypes from 'prop-types';
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 class Categories extends React.Component {
   constructor(props) {
