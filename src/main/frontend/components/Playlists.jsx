@@ -4,14 +4,22 @@ import PropTypes from 'prop-types';
 import List, {ListItem, ListItemText} from 'material-ui/List';
 
 class Playlists extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       playlists: [],
     };
   }
 
+  componentWillMount() {
+    this.updatePlaylists();
+  }
+
   componentDidUpdate() {
+    this.updatePlaylists();
+  }
+
+  updatePlaylists() {
     const categories = this.context.categories;
     const slug = this.props.match.params.category_slug;
 
@@ -23,9 +31,7 @@ class Playlists extends React.Component {
         .then(FetchUtil.handleError)
         .then(response => response.json())
         .then(playlists => {
-          if (this.refs.showPlaylists) {
-            this.setState({...this.state, playlists});
-          }
+          if (this.refs.showPlaylists) this.setState({...this.state, playlists});
         });
     }
   }
