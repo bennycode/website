@@ -16,7 +16,7 @@ describe('CategoriesRouter', () => {
   describe('getCategories', () => {
     it('caches database requests', (done) => {
       spyOn(server.router.categories, 'queryCategories').and.callThrough();
-      const url = `${TestHelper.SERVER.BASE_URL}${CategoriesRouter.PATH.V1_CATEGORIES}`;
+      const url = `${TestHelper.SERVER.BASE_URL}${CategoriesRouter.PATH.REST_V1_CATEGORIES}`;
 
       Promise.resolve()
         .then(() => TestHelper.promiseRequest(url))
@@ -35,10 +35,10 @@ describe('CategoriesRouter', () => {
     });
   });
 
-  describe('getPlaylists', () => {
+  describe('getPlaylistsByCategoryId', () => {
     it('returns playlists of a specific category', (done) => {
       const category_id = 2;
-      const url = `${TestHelper.SERVER.BASE_URL}${CategoriesRouter.PATH.V1_CATEGORY}/${category_id}`;
+      const url = `${TestHelper.SERVER.BASE_URL}${CategoriesRouter.PATH.REST_V1_CATEGORY}/${category_id}`;
 
       request.get(url, (error, response) => {
         if (error) return done.fail(error);
