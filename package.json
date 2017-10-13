@@ -35,7 +35,6 @@
     "nodemon": "1.12.1",
     "nsp": "2.8.1",
     "prettier": "1.7.4",
-    "prettier-eslint-cli": "4.4.0",
     "request": "2.83.0",
     "webpack-dev-server": "2.9.1"
   },
@@ -50,8 +49,12 @@
     "url": "git+https://github.com/welovecoding/website.git"
   },
   "lint-staged": {
-    "src/**/*.{css,js,json,jsx,less,scss}": [
-      "npm run lint",
+    "src/**/*.{js}": [
+      "npm run lint:backend",
+      "git add"
+    ],
+    "src/**/*.{css,jsx,less,scss}": [
+      "prettier --write",
       "git add"
     ]
   },
@@ -64,7 +67,9 @@
     "init": "npm run init:db",
     "init:db": "knex migrate:latest && knex seed:run",
     "postinstall": "npm run dist",
-    "lint": "prettier-eslint --write \"src/**/*.{css,js,json,jsx,less,scss}\"",
+    "lint": "npm run lint:scripts && npm run lint:styles",
+    "lint:scripts": "eslint src --fix",
+    "lint:styles": "prettier --write \"src/**/*.{css,jsx,less,scss}\"",
     "precommit": "lint-staged",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",

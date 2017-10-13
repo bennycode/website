@@ -7,7 +7,7 @@ class CategoriesRouter {
       PAGE_TUTORIALS: '/tutorials',
       REST_V1_CATEGORY: '/rest/service/v1/category',
       REST_V1_CATEGORIES: '/rest/service/v1/categories',
-    };
+    }
   }
 
   constructor() {
@@ -24,10 +24,10 @@ class CategoriesRouter {
     const categories = Promise.resolve()
       .then(() => {
         const cachedResponse = this.cache[CategoriesRouter.PATH.REST_V1_CATEGORIES];
-        return cachedResponse ? cachedResponse : this.queryCategories();
+        return (cachedResponse) ? cachedResponse : this.queryCategories();
       })
-      .then(categories => this.filterCategories(categories))
-      .then(filteredCategories => (this.cache[CategoriesRouter.PATH.REST_V1_CATEGORIES] = filteredCategories));
+      .then((categories) => this.filterCategories(categories))
+      .then((filteredCategories) => (this.cache[CategoriesRouter.PATH.REST_V1_CATEGORIES] = filteredCategories));
 
     return reply(categories);
   }
@@ -38,15 +38,22 @@ class CategoriesRouter {
     const playlists = Promise.resolve()
       .then(() => {
         const cachedResponse = this.cache[`${CategoriesRouter.PATH.REST_V1_CATEGORY}/${category_id}`];
-        return cachedResponse ? cachedResponse : this.queryPlaylistsByCategoryId(category_id);
+        return (cachedResponse) ? cachedResponse : this.queryPlaylistsByCategoryId(category_id);
       })
-      .then(playlists => (this.cache[`${CategoriesRouter.PATH.REST_V1_CATEGORY}/${category_id}`] = playlists));
+      .then((playlists) => (this.cache[`${CategoriesRouter.PATH.REST_V1_CATEGORY}/${category_id}`] = playlists));
 
     reply(playlists);
   }
 
   queryCategories() {
-    return Category.query().select(['id', 'color', 'name', 'slug']);
+    return Category
+      .query()
+      .select([
+        'id',
+        'color',
+        'name',
+        'slug',
+      ]);
   }
 
   queryPlaylistsByCategoryId(category_id) {
