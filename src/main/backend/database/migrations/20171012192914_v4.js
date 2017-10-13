@@ -2,6 +2,7 @@ exports.up = (knex, Promise) => {
   return Promise.all([
     knex.schema.alterTable('categories', (table) => {
       table.string('slug');
+      table.unique('slug');
     }),
   ]);
 };

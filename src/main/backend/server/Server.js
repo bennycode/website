@@ -37,7 +37,7 @@ class Server {
       },
       {
         method: 'GET',
-        path: '/tutorials/{category_slug}',
+        path: `${CategoriesRouter.PATH.PAGE_TUTORIALS}/{category_slug}`,
         config: {
           handler: {
             directory: {
@@ -50,14 +50,14 @@ class Server {
       },
       {
         method: 'GET',
-        path: CategoriesRouter.PATH.V1_CATEGORIES,
+        path: CategoriesRouter.PATH.REST_V1_CATEGORIES,
         config: {handler: this.router.categories.getCategories},
       },
       {
         method: 'GET',
-        path: `${CategoriesRouter.PATH.V1_CATEGORY}/{category_id}`,
+        path: `${CategoriesRouter.PATH.REST_V1_CATEGORY}/{category_id}`,
         config: {
-          handler: this.router.categories.getPlaylists,
+          handler: this.router.categories.getPlaylistsByCategoryId,
           validate: {
             params: {
               category_id: Joi.number().required(),

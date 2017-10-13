@@ -1,17 +1,18 @@
-import FetchUtil from '../utils/FetchUtil';
 import List, {ListItem, ListItemText} from 'material-ui/List';
+import Playlists from './Playlists.jsx';
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-
-const Gist = ({match}) => <p>{match.params.category_slug}</p>;
+import PropTypes from 'prop-types';
 
 class Categories extends React.Component {
-  clickOnCategory(category) {
-    window
-      .fetch(`/rest/service/v1/category/${category.id}`)
-      .then(FetchUtil.handleError)
-      .then(response => response.json())
-      .then(console.log);
+  constructor(props) {
+    super(props);
+  }
+
+  getChildContext() {
+    return {
+      categories: this.props.categories,
+    };
   }
 
   renderListItems() {
@@ -31,11 +32,15 @@ class Categories extends React.Component {
           <Route exact={true} path="/">
             <List dense={false}>{this.renderListItems()}</List>
           </Route>
-          <Route path="/tutorials/:category_slug" component={Gist} />
+          <Route path="/tutorials/:category_slug" component={Playlists} />
         </Switch>
       </Router>
     );
   }
 }
+
+Categories.childContextTypes = {
+  categories: PropTypes.array,
+};
 
 export default Categories;
