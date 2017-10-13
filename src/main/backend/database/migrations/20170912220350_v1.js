@@ -1,7 +1,10 @@
 exports.up = (knex, Promise) => {
   return Promise.all([
-    knex.schema.createTableIfNotExists('categories', (table) => {
-      table.increments('id').primary().unsigned();
+    knex.schema.createTableIfNotExists('categories', table => {
+      table
+        .increments('id')
+        .primary()
+        .unsigned();
       table.string('color').notNullable();
       table.string('name').notNullable();
     }),
@@ -9,7 +12,5 @@ exports.up = (knex, Promise) => {
 };
 
 exports.down = (knex, Promise) => {
-  return Promise.all([
-    knex.schema.dropTableIfExists('categories'),
-  ]);
+  return Promise.all([knex.schema.dropTableIfExists('categories')]);
 };

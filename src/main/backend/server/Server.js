@@ -71,22 +71,25 @@ class Server {
       this.server = new Hapi.Server();
       this.server.connection({port: this.config.PORT});
 
-      this.server.register({
-        register: require('inert'),
-      }, (error) => {
-        if (error) throw error;
-        this.init();
-        this.server.start((error) => {
+      this.server.register(
+        {
+          register: require('inert'),
+        },
+        error => {
           if (error) throw error;
-          callback(this.server.info.port);
-        });
-      });
+          this.init();
+          this.server.start(error => {
+            if (error) throw error;
+            callback(this.server.info.port);
+          });
+        }
+      );
     }
   }
 
   stop(callback) {
     if (this.server) {
-      this.server.stop({timeout: 1000}, (error) => {
+      this.server.stop({timeout: 1000}, error => {
         if (error) throw error;
         this.server = undefined;
         callback();
