@@ -6,15 +6,15 @@ const TestHelper = require('../../../../../helpers/TestHelper');
 describe('CategoriesRouter', () => {
   let server = undefined;
 
-  beforeAll((done) => {
+  beforeAll(done => {
     server = new Server({PORT: TestHelper.SERVER.PORT});
     server.start(() => done());
   });
 
-  afterAll((done) => server && server.stop(done));
+  afterAll(done => server && server.stop(done));
 
   describe('getCategories', () => {
-    it('caches database requests', (done) => {
+    it('caches database requests', done => {
       spyOn(server.router.categories, 'queryCategories').and.callThrough();
       const url = `${TestHelper.SERVER.BASE_URL}${CategoriesRouter.PATH.REST_V1_CATEGORIES}`;
 
@@ -36,7 +36,7 @@ describe('CategoriesRouter', () => {
   });
 
   describe('getPlaylistsByCategoryId', () => {
-    it('returns playlists of a specific category', (done) => {
+    it('returns playlists of a specific category', done => {
       const category_id = 2;
       const url = `${TestHelper.SERVER.BASE_URL}${CategoriesRouter.PATH.REST_V1_CATEGORY}/${category_id}`;
 
