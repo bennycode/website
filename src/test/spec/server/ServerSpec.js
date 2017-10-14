@@ -42,4 +42,10 @@ describe('Server', () => {
       });
     });
   });
+
+  describe('"VERSION"', () => {
+    it('returns the current package version.', () => {
+      expect(server.VERSION).toBe(require('../../../../package.json').version);
+    });
+  });
 });

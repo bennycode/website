@@ -100,4 +100,6 @@ class Server {
   }
 }
 
+Server.prototype.VERSION = require('../../../../package.json').version;
+
 module.exports = Server;
