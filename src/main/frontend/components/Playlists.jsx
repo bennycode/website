@@ -16,7 +16,7 @@ class Playlists extends React.Component {
   }
 
   componentDidUpdate() {
-    this.updatePlaylists();
+    if (this.state.playlists.length === 0) this.updatePlaylists();
   }
 
   updatePlaylists() {
