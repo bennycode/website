@@ -20,27 +20,34 @@ class CategoriesRouter {
     return categories.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   }
 
+  readFromCache(cacheId, fetcher) {
+    const cachedValue = this.cache[cacheId];
+    return cachedValue ? cachedValue : fetcher();
+  }
+
+  saveInCache(cacheId, value) {
+    this.cache[cacheId] = value;
+    return this.cache[cacheId];
+  }
+
   getCategories(request, reply) {
+    const cacheId = request.url.path;
+
     const categories = Promise.resolve()
-      .then(() => {
-        const cachedResponse = this.cache[CategoriesRouter.PATH.REST_V1_CATEGORIES];
-        return cachedResponse ? cachedResponse : this.queryCategories();
-      })
+      .then(() => this.readFromCache(cacheId, this.queryCategories))
       .then(categories => this.filterCategories(categories))
-      .then(filteredCategories => (this.cache[CategoriesRouter.PATH.REST_V1_CATEGORIES] = filteredCategories));
+      .then(filteredCategories => this.saveInCache(cacheId, filteredCategories));
 
     return reply(categories);
   }
 
   getPlaylistsByCategoryId(request, reply) {
+    const cacheId = request.url.path;
     const {category_id} = request.params;
 
     const playlists = Promise.resolve()
-      .then(() => {
-        const cachedResponse = this.cache[`${CategoriesRouter.PATH.REST_V1_CATEGORY}/${category_id}`];
-        return cachedResponse ? cachedResponse : this.queryPlaylistsByCategoryId(category_id);
-      })
-      .then(playlists => (this.cache[`${CategoriesRouter.PATH.REST_V1_CATEGORY}/${category_id}`] = playlists));
+      .then(() => this.readFromCache(cacheId, () => this.queryPlaylistsByCategoryId(category_id)))
+      .then(playlists => this.saveInCache(cacheId, playlists));
 
     reply(playlists);
   }
