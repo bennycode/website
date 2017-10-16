@@ -1,15 +1,17 @@
+import * as statusActions from '../modules/status/statusActions';
 import Categories from './Categories.jsx';
 import FetchUtil from '../utils/FetchUtil';
 import Grid from 'material-ui/Grid';
 import React from 'react';
 import Typography from 'material-ui/Typography';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       categories: [],
-      version: '',
     };
   }
 
@@ -20,11 +22,7 @@ class App extends React.Component {
       .then(response => response.json())
       .then(categories => this.setState({...this.state, categories}));
 
-    window
-      .fetch('/status?info=version')
-      .then(FetchUtil.handleError)
-      .then(response => response.json())
-      .then(info => this.setState({...this.state, version: info.version}));
+    this.props.actions.fetchVersion();
   }
 
   render() {
@@ -40,7 +38,7 @@ class App extends React.Component {
         </Grid>
         <Grid item={true} xs={12}>
           <Typography type="caption" gutterBottom={true} align="left">
-            {`Version ${this.state.version}`}
+            {`Version ${this.props.version}`}
           </Typography>
         </Grid>
       </Grid>
@@ -48,4 +46,16 @@ class App extends React.Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    version: state.status.version,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(statusActions, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
