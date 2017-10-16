@@ -9,9 +9,10 @@ export function fetchVersion() {
       .then(FetchUtil.handleError)
       .then(response => response.json())
       .then(status => {
+        const {version} = status;
         return {
           type: FETCHED_VERSION,
-          payload: status.version,
+          data: version,
         };
       });
   };
