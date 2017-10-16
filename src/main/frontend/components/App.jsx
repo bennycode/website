@@ -24,7 +24,7 @@ class App extends React.Component {
       .fetch('/status?info=version')
       .then(FetchUtil.handleError)
       .then(response => response.json())
-      .then(info => this.setState({...this.state, version: info.version}));
+      .then(status => this.setState({...this.state, version: status.version}));
   }
 
   render() {
