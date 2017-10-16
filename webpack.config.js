@@ -4,7 +4,8 @@ module.exports = {
     historyApiFallback: true,
     port: 8081,
     proxy: {
-      '/rest': 'http://localhost:8080'
+      '/rest': 'http://localhost:8080',
+      '/status': 'http://localhost:8080'
     }
   },
   entry: `${__dirname}/src/main/frontend/index.jsx`,

@@ -1,3 +1,4 @@
+const Boom = require('boom');
 const CategoriesRouter = require('./route/rest/service/v1/CategoriesRouter');
 const Hapi = require('hapi');
 const Joi = require('joi');
@@ -57,6 +58,30 @@ class Server {
           validate: {
             params: {
               category_id: Joi.number().required(),
+            },
+          },
+        },
+      },
+      {
+        method: 'GET',
+        path: `/status`,
+        config: {
+          handler: (request, reply) => {
+            const {info} = request.query;
+
+            switch (info) {
+              case 'version':
+                reply({version: this.VERSION});
+                break;
+              default:
+                reply(Boom.notFound(`Supplied parameter value "${info}" is unsupported.`));
+            }
+          },
+          validate: {
+            query: {
+              info: Joi.string()
+                .valid('version')
+                .required(),
             },
           },
         },
