@@ -10,10 +10,10 @@ export function fetchVersion() {
       .then(response => response.json())
       .then(status => {
         const {version} = status;
-        return {
+        return dispatch({
           type: FETCHED_VERSION,
           data: version,
-        };
+        });
       });
   };
 }
