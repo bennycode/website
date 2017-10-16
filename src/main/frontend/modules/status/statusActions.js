@@ -1,5 +1,5 @@
-import FetchUtil from '../../utils/FetchUtil';
 import fetch from 'isomorphic-fetch';
+import FetchUtil from '../../utils/FetchUtil';
 
 export const FETCHED_VERSION = 'FETCHED_VERSION';
 
