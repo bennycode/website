@@ -20,3 +20,7 @@ npm start
 - Production Database: [**PostgreSQL**](https://www.postgresql.org)
 - Development Database: [**SQLite**](https://www.sqlite.org)
 - Hosting Platform: [**Heroku**](https://dashboard.heroku.com)
+
+## Methodologies
+- Commit Message Style: [**Semantic Commit Messages**](https://seesparkbox.com/foundry/semantic_commit_messages)
+- Frontend Structure: [**Fractal**](https://hackernoon.com/fractal-a-react-app-structure-for-infinite-scale-4dab943092af)
