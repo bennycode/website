@@ -1,6 +1,6 @@
-import * as statusActions from '../modules/status/statusActions';
+import * as categoriesActionCreators from '../modules/categories/categoriesActionCreators';
+import * as statusActionCreators from '../modules/status/statusActionCreators';
 import Categories from './Categories.jsx';
-import FetchUtil from '../utils/FetchUtil';
 import Grid from 'material-ui/Grid';
 import React from 'react';
 import Typography from 'material-ui/Typography';
@@ -10,18 +10,10 @@ import {connect} from 'react-redux';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      categories: [],
-    };
   }
 
   componentWillMount() {
-    window
-      .fetch('/rest/service/v1/categories')
-      .then(FetchUtil.handleError)
-      .then(response => response.json())
-      .then(categories => this.setState({...this.state, categories}));
-
+    this.props.actions.fetchCategories();
     this.props.actions.fetchVersion();
   }
 
@@ -34,11 +26,11 @@ class App extends React.Component {
           </Typography>
         </Grid>
         <Grid item={true} xs={12}>
-          <Categories categories={this.state.categories} />
+          <Categories categories={this.props.categories} />
         </Grid>
         <Grid item={true} xs={12}>
           <Typography type="caption" gutterBottom={true} align="left">
-            {`Version ${this.props.version}`}
+            {`Version ${this.props.status.version}`}
           </Typography>
         </Grid>
       </Grid>
@@ -47,14 +39,21 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
+  const {categories, status} = state;
   return {
-    version: state.status.version,
+    categories,
+    status,
   };
 }
 
 function mapDispatchToProps(dispatch) {
+  let boundActionCreators = Object.assign(
+    {},
+    bindActionCreators(categoriesActionCreators, dispatch),
+    bindActionCreators(statusActionCreators, dispatch)
+  );
   return {
-    actions: bindActionCreators(statusActions, dispatch),
+    actions: boundActionCreators,
   };
 }
 

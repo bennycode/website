@@ -1,4 +1,4 @@
-import {FETCHED_VERSION} from './statusActions';
+import {FETCHED_VERSION} from './statusActionCreators';
 
 export const status = {
   version: '0.0.0',
