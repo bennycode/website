@@ -19,6 +19,7 @@ Programming Language | [**ECMAScript**](https://www.ecma-international.org/ecma-
 Server Framework | [**hapi.js**](https://hapijs.com)
 Testing Framework | [**Jasmine**](https://jasmine.github.io)
 User Interface Library | [**React**](https://reactjs.org)
+Object-relational mapping | [**Objection.js**](http://vincit.github.io/objection.js/)
 Production Database | [**PostgreSQL**](https://www.postgresql.org)
 Development Database | [**SQLite**](https://www.sqlite.org)
 Hosting Platform | [**Heroku**](https://dashboard.heroku.com)
