@@ -1,8 +1,6 @@
 import {FETCHED_CATEGORIES} from './CategoryActionCreators';
 
 export const initialState = {
-  fetching: false,
-  fetched: false,
   categories: [],
 };
 
