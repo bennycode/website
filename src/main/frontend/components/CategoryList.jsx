@@ -18,7 +18,7 @@ class CategoryList extends React.Component {
   renderListItems() {
     return this.props.categories.map(category => {
       return (
-        <ListItem button={true} component={Link} key={category.id} to={`/tutorials/${category.slug}`}>
+        <ListItem button={true} component={Link} key={category.id} to={`/categories/${category.slug}`}>
           <ListItemText primary={category.name} />
         </ListItem>
       );
@@ -32,7 +32,7 @@ class CategoryList extends React.Component {
           <Route exact={true} path="/">
             <List dense={false}>{this.renderListItems()}</List>
           </Route>
-          <Route path="/tutorials/:category_slug" component={TutorialList} />
+          <Route path="/categories/:category_slug" component={TutorialList} />
         </Switch>
       </Router>
     );
