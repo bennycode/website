@@ -4,13 +4,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 class TutorialList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      playlists: [],
-    };
-  }
-
   componentWillMount() {
     this.updatePlaylists();
   }
