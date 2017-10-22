@@ -8,12 +8,11 @@ export function fetchVersion() {
     return fetch('/status?info=version')
       .then(FetchUtil.handleError)
       .then(response => response.json())
-      .then(status => {
-        const {version} = status;
-        return dispatch({
+      .then(status =>
+        dispatch({
           type: FETCHED_VERSION,
-          data: version,
-        });
-      });
+          data: status.version,
+        })
+      );
   };
 }
