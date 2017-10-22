@@ -16,7 +16,8 @@ const composeEnhancers = () => {
     }
   }
 
-  return compose(applyMiddleware(...middlewares), ...enhancers);
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  return composeEnhancers(applyMiddleware(...middlewares), ...enhancers);
 };
 
 const store = createStore(rootReducer, initialState, composeEnhancers());

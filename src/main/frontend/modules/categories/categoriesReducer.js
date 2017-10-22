@@ -1,11 +1,18 @@
 import {FETCHED_CATEGORIES} from './categoriesActionCreators';
 
-export const categories = [];
+export const initialState = {
+  fetching: false,
+  fetched: false,
+  categories: [],
+};
 
-export default function categoriesReducer(state = categories, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case FETCHED_CATEGORIES:
-      return action.data;
+      return {
+        ...state,
+        categories: [...action.data],
+      };
     default:
       return state;
   }

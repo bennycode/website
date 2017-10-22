@@ -1,11 +1,11 @@
 import FetchUtil from '../utils/FetchUtil';
 import List, {ListItem, ListItemText} from 'material-ui/List';
-import PropTypes from 'prop-types';
 import React from 'react';
+import {connect} from 'react-redux';
 
-class Playlists extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+class TutorialList extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       playlists: [],
     };
@@ -20,7 +20,7 @@ class Playlists extends React.Component {
   }
 
   updatePlaylists() {
-    const categories = this.context.categories;
+    const categories = this.props.categories;
     const slug = this.props.match.params.category_slug;
 
     const category = categories.filter(category => category.slug === slug)[0];
@@ -55,8 +55,6 @@ class Playlists extends React.Component {
   }
 }
 
-Playlists.contextTypes = {
-  categories: PropTypes.array,
-};
-
-export default Playlists;
+export default connect(state => ({
+  categories: state.categoryState.categories,
+}))(TutorialList);
