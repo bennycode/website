@@ -8,11 +8,11 @@ export function fetchCategories() {
     return fetch('/rest/service/v1/category')
       .then(FetchUtil.handleError)
       .then(response => response.json())
-      .then(categories => {
-        return dispatch({
+      .then(categories =>
+        dispatch({
           type: FETCHED_CATEGORIES,
           data: categories,
-        });
-      });
+        })
+      );
   };
 }
