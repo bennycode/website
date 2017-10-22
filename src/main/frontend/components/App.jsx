@@ -7,7 +7,7 @@ import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 class App extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchCategories();
     this.props.fetchVersion();
   }

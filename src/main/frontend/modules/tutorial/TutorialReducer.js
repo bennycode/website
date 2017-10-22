@@ -1,15 +1,15 @@
-import {FETCHED_TUTORIALS} from './TutorialReducer';
+import {FETCHED_TUTORIALS} from './TutorialActionCreators';
 
 export const initialState = {
-  categories: [],
+  tutorials: [],
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCHED_CATEGORIES:
+    case FETCHED_TUTORIALS:
       return {
         ...state,
-        categories: [...action.data],
+        tutorials: [...action.data],
       };
     default:
       return state;
