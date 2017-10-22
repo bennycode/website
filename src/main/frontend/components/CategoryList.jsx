@@ -1,20 +1,11 @@
+import Grid from 'material-ui/Grid';
 import List, {ListItem, ListItemText} from 'material-ui/List';
-import TutorialList from './TutorialList.jsx';
-import PropTypes from 'prop-types';
 import React from 'react';
-import {Link, Route, BrowserRouter as Router, Switch} from 'react-router-dom';
+import Typography from 'material-ui/Typography';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 class CategoryList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  getChildContext() {
-    return {
-      categories: this.props.categories,
-    };
-  }
-
   renderListItems() {
     return this.props.categories.map(category => {
       return (
@@ -27,20 +18,26 @@ class CategoryList extends React.Component {
 
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route exact={true} path="/(categories)?">
-            <List dense={false}>{this.renderListItems()}</List>
-          </Route>
-          <Route path="/categories/:category_slug" component={TutorialList} />
-        </Switch>
-      </Router>
+      <Grid container={true} spacing={16}>
+        <Grid item={true} xs={12}>
+          <Typography type="headline" component="h2">
+            {'Tutorials'}
+          </Typography>
+        </Grid>
+        <Grid item={true} xs={12}>
+          <List dense={false}>{this.renderListItems()}</List>
+        </Grid>
+        <Grid item={true} xs={12}>
+          <Typography type="caption" gutterBottom={true} align="left">
+            {`Version ${this.props.status.version}`}
+          </Typography>
+        </Grid>
+      </Grid>
     );
   }
 }
 
-CategoryList.childContextTypes = {
-  categories: PropTypes.array,
-};
-
-export default CategoryList;
+export default connect(state => ({
+  categories: state.categoryState.categories,
+  status: state.status,
+}))(CategoryList);
