@@ -1,5 +1,5 @@
 import List, {ListItem, ListItemText} from 'material-ui/List';
-import Playlists from './Playlists.jsx';
+import TutorialList from './TutorialList.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {Link, Route, BrowserRouter as Router, Switch} from 'react-router-dom';
@@ -32,7 +32,7 @@ class CategoryList extends React.Component {
           <Route exact={true} path="/">
             <List dense={false}>{this.renderListItems()}</List>
           </Route>
-          <Route path="/tutorials/:category_slug" component={Playlists} />
+          <Route path="/tutorials/:category_slug" component={TutorialList} />
         </Switch>
       </Router>
     );

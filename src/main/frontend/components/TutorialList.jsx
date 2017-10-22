@@ -3,7 +3,7 @@ import List, {ListItem, ListItemText} from 'material-ui/List';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-class Playlists extends React.Component {
+class TutorialList extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -55,8 +55,8 @@ class Playlists extends React.Component {
   }
 }
 
-Playlists.contextTypes = {
+TutorialList.contextTypes = {
   categories: PropTypes.array,
 };
 
-export default Playlists;
+export default TutorialList;
