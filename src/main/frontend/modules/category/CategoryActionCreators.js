@@ -5,7 +5,7 @@ export const FETCHED_CATEGORIES = 'FETCHED_CATEGORIES';
 
 export function fetchCategories() {
   return dispatch => {
-    return fetch('/rest/service/v1/categories')
+    return fetch('/rest/service/v1/category')
       .then(FetchUtil.handleError)
       .then(response => response.json())
       .then(categories => {

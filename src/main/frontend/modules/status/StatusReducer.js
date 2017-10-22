@@ -1,10 +1,10 @@
-import {FETCHED_VERSION} from './statusActionCreators';
+import {FETCHED_VERSION} from './StatusActionCreators';
 
-export const status = {
+export const initialState = {
   version: '0.0.0',
 };
 
-export default function statusReducer(state = status, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case FETCHED_VERSION:
       return {

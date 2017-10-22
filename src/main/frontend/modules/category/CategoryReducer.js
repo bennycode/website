@@ -1,4 +1,4 @@
-import {FETCHED_CATEGORIES} from './categoriesActionCreators';
+import {FETCHED_CATEGORIES} from './CategoryActionCreators';
 
 export const initialState = {
   fetching: false,

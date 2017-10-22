@@ -1,5 +1,5 @@
-import * as categoriesActionCreators from '../modules/categories/categoriesActionCreators';
-import * as statusActionCreators from '../modules/status/statusActionCreators';
+import * as CategoryActionCreators from '../modules/category/CategoryActionCreators';
+import * as StatusActionCreators from '../modules/status/StatusActionCreators';
 import CategoryList from './CategoryList';
 import React from 'react';
 import TutorialList from './TutorialList';
@@ -24,7 +24,7 @@ class App extends React.Component {
   }
 }
 
-export default connect(null, {
-  ...categoriesActionCreators,
-  ...statusActionCreators,
+export default connect(undefined, {
+  ...CategoryActionCreators,
+  ...StatusActionCreators,
 })(App);

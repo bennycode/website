@@ -1,8 +1,8 @@
-import categoriesReducer from './categories/categoriesReducer';
-import statusReducer from './status/statusReducer';
+import CategoryReducer from './category/CategoryReducer';
+import StatusReducer from './status/StatusReducer';
 import {combineReducers} from 'redux';
 
 export default combineReducers({
-  categoryState: categoriesReducer,
-  status: statusReducer,
+  categoryState: CategoryReducer,
+  statusState: StatusReducer,
 });

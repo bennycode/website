@@ -29,7 +29,7 @@ class CategoryList extends React.Component {
         </Grid>
         <Grid item={true} xs={12}>
           <Typography type="caption" gutterBottom={true} align="left">
-            {`Version ${this.props.status.version}`}
+            {`Version ${this.props.version}`}
           </Typography>
         </Grid>
       </Grid>
@@ -39,5 +39,5 @@ class CategoryList extends React.Component {
 
 export default connect(state => ({
   categories: state.categoryState.categories,
-  status: state.status,
+  version: state.statusState.version,
 }))(CategoryList);
