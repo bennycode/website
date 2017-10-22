@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {Link, Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 
-class Categories extends React.Component {
+class CategoryList extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -39,8 +39,8 @@ class Categories extends React.Component {
   }
 }
 
-Categories.childContextTypes = {
+CategoryList.childContextTypes = {
   categories: PropTypes.array,
 };
 
-export default Categories;
+export default CategoryList;

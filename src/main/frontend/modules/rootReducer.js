@@ -3,6 +3,6 @@ import statusReducer from './status/statusReducer';
 import {combineReducers} from 'redux';
 
 export default combineReducers({
-  categories: categoriesReducer,
+  categoryState: categoriesReducer,
   status: statusReducer,
 });

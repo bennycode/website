@@ -1,20 +1,15 @@
 import * as categoriesActionCreators from '../modules/categories/categoriesActionCreators';
 import * as statusActionCreators from '../modules/status/statusActionCreators';
-import Categories from './Categories.jsx';
+import CategoryList from './CategoryList.jsx';
 import Grid from 'material-ui/Grid';
 import React from 'react';
 import Typography from 'material-ui/Typography';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
-    this.props.actions.fetchCategories();
-    this.props.actions.fetchVersion();
+    this.props.fetchCategories();
+    this.props.fetchVersion();
   }
 
   render() {
@@ -26,7 +21,7 @@ class App extends React.Component {
           </Typography>
         </Grid>
         <Grid item={true} xs={12}>
-          <Categories categories={this.props.categories} />
+          <CategoryList categories={this.props.categories} />
         </Grid>
         <Grid item={true} xs={12}>
           <Typography type="caption" gutterBottom={true} align="left">
@@ -38,23 +33,13 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  const {categories, status} = state;
-  return {
-    categories,
-    status,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  let boundActionCreators = Object.assign(
-    {},
-    bindActionCreators(categoriesActionCreators, dispatch),
-    bindActionCreators(statusActionCreators, dispatch)
-  );
-  return {
-    actions: boundActionCreators,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  state => ({
+    categories: state.categoryState.categories,
+    status: state.status,
+  }),
+  {
+    ...categoriesActionCreators,
+    ...statusActionCreators,
+  }
+)(App);
