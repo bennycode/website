@@ -4,7 +4,7 @@ const Playlist = require('../../../../models/Playlist');
 class CategoriesRouter {
   static get PATH() {
     return {
-      PAGE_CATEGORIES: '/category',
+      PAGE_CATEGORIES: '/categories',
       REST_V1_CATEGORY: '/rest/service/v1/category',
       REST_V1_CATEGORIES: '/rest/service/v1/category',
     };
