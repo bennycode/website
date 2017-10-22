@@ -29,7 +29,7 @@ class CategoryList extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact={true} path="/">
+          <Route exact={true} path="/(categories)?">
             <List dense={false}>{this.renderListItems()}</List>
           </Route>
           <Route path="/categories/:category_slug" component={TutorialList} />
