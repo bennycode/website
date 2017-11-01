@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+const webpack = require('webpack');
+
 module.exports = {
   devServer: {
     contentBase: `${__dirname}/dist/frontend`,
@@ -8,12 +11,21 @@ module.exports = {
       '/status': 'http://localhost:8080',
     },
   },
-  entry: `${__dirname}/src/main/frontend/index.jsx`,
+  entry: {
+    index: ['react-hot-loader/patch', `${__dirname}/src/main/frontend/index.jsx`],
+  },
   output: {
     path: `${__dirname}/dist/frontend/js`,
     publicPath: '/js',
-    filename: 'index.js',
+    filename: '[name].js',
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
+    }),
+  ],
   module: {
     rules: [
       {
