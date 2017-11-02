@@ -43,7 +43,7 @@
     "prettier": "1.7.4",
     "prettier-eslint-cli": "4.4.0",
     "request": "2.83.0",
-    "webpack-dev-server": "2.9.3"
+    "webpack-dev-server": "2.9.4"
   },
   "engines": {
     "node": "8.x.x"
