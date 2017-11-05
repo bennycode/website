@@ -110,15 +110,10 @@ class Server {
 
   stop(callback) {
     if (this.server) {
-      this.server
-        .stop()
-        .then(() => {
-          this.server = undefined;
-          callback();
-        })
-        .catch(error => {
-          throw error;
-        });
+      this.server.stop().then(() => {
+        this.server = undefined;
+        callback();
+      });
     } else {
       callback();
     }
