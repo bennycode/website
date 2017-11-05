@@ -30,7 +30,7 @@ class CategoriesRouter {
     return this.cache[cacheId];
   }
 
-  getCategories(request, reply) {
+  getCategories(request) {
     const cacheId = request.url.path;
 
     const categories = Promise.resolve()
@@ -38,10 +38,10 @@ class CategoriesRouter {
       .then(categories => this.filterCategories(categories))
       .then(filteredCategories => this.saveInCache(cacheId, filteredCategories));
 
-    return reply(categories);
+    return categories;
   }
 
-  getPlaylistsByCategoryId(request, reply) {
+  getPlaylistsByCategoryId(request) {
     const cacheId = request.url.path;
     const {category_id} = request.params;
 
@@ -49,7 +49,7 @@ class CategoriesRouter {
       .then(() => this.readFromCache(cacheId, () => this.queryPlaylistsByCategoryId(category_id)))
       .then(playlists => this.saveInCache(cacheId, playlists));
 
-    reply(playlists);
+    return playlists;
   }
 
   queryCategories() {
