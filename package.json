@@ -40,7 +40,7 @@
     "lint-staged": "4.3.0",
     "nodemon": "1.12.1",
     "nsp": "3.1.0",
-    "prettier": "1.7.4",
+    "prettier": "1.8.0",
     "prettier-eslint-cli": "4.4.0",
     "request": "2.83.0",
     "webpack-dev-server": "2.9.4"
