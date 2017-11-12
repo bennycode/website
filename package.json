@@ -9,7 +9,7 @@
     "hapi": "17.0.1",
     "inert": "5.0.1",
     "isomorphic-fetch": "2.2.1",
-    "joi": "13.0.1",
+    "joi": "13.0.2",
     "knex": "0.14.0",
     "limax": "1.5.0",
     "material-ui": "1.0.0-beta.17",
