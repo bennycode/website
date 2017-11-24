@@ -13,5 +13,4 @@
 /dist/frontend/js
 
 # Temporary Files
-/temp/**/*
-!/temp/.gitkeep
+/temp
