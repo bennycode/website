@@ -7,6 +7,7 @@ module.exports = {
     "node": true,
   },
   "extends": ["prettier", "eslint:recommended", "plugin:react/recommended"],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -14,7 +15,7 @@ module.exports = {
     },
     "sourceType": "module",
   },
-  "plugins": ["prettier", "react"],
+  "plugins": ["babel", "prettier", "react"],
   "rules": {
     "brace-style": ["error", "1tbs"],
     "comma-dangle": ["error", "always-multiline"],
@@ -35,5 +36,6 @@ module.exports = {
         "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
       },
     ],
+    "strict": 0,
   },
 };
