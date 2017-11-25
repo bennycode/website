@@ -13,6 +13,7 @@
     "knex": "0.14.1",
     "limax": "1.5.0",
     "material-ui": "1.0.0-beta.17",
+    "mkdirp": "0.5.1",
     "objection": "0.9.2",
     "pg": "7.4.0",
     "prop-types": "15.6.0",
@@ -62,10 +63,11 @@
     ]
   },
   "scripts": {
+    "clear": "rimraf temp && mkdirp temp",
     "check": "nsp check --output summary",
     "coverage": "npm run coverage:backend",
     "coverage:backend": "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
-    "dist": "npm run init:db && npm run dist:frontend",
+    "dist": "npm run clear && npm run init:db && npm run dist:frontend",
     "dist:frontend": "rimraf dist/frontend/js && webpack",
     "init": "npm run init:db",
     "init:db": "knex migrate:latest && knex seed:run",
