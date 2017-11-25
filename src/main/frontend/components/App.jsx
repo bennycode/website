@@ -1,6 +1,7 @@
 import * as CategoryActionCreators from '../modules/category/CategoryActionCreators';
 import * as StatusActionCreators from '../modules/status/StatusActionCreators';
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
+import {bindActionCreators} from 'redux'
 import CategoryList from './CategoryList';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -30,7 +31,11 @@ App.propTypes = {
   fetchVersion: PropTypes.func,
 };
 
-export default connect(undefined, {
-  ...CategoryActionCreators,
-  ...StatusActionCreators,
-})(App);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    ...CategoryActionCreators,
+    ...StatusActionCreators,
+  }, dispatch);
+}
+
+export default connect(undefined, mapDispatchToProps)(App);

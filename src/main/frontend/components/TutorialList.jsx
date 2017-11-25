@@ -1,8 +1,9 @@
 import * as TutorialActionCreators from '../modules/tutorial/TutorialActionCreators';
 import List, {ListItem, ListItemText} from 'material-ui/List';
-import React from 'react';
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 class TutorialList extends React.Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class TutorialList extends React.Component {
     const categories = this.props.categories;
     const slug = this.props.match.params.category_slug;
     const category = categories.filter(category => category.slug === slug)[0];
-    if (category) this.props.actions.fetchTutorialsByCategoryId(category.id);
+    if (category) this.props.fetchTutorialsByCategoryId(category.id);
   }
 
   render() {
@@ -35,6 +36,14 @@ class TutorialList extends React.Component {
   }
 }
 
+TutorialList.propTypes = {
+  actions: PropTypes.object,
+  categories: PropTypes.arrayOf(PropTypes.object),
+  fetchTutorialsByCategoryId: PropTypes.func,
+  match: PropTypes.object.isRequired,
+  tutorials: PropTypes.arrayOf(PropTypes.object),
+};
+
 function mapStateToProps(state) {
   return {
     categories: state.categoryState.categories,
@@ -43,7 +52,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators({...TutorialActionCreators}, dispatch)};
+  return bindActionCreators({
+    ...TutorialActionCreators,
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TutorialList);

@@ -1,9 +1,9 @@
 import App from './components/App';
-import React from 'react';
-import store from './store';
 import {AppContainer} from 'react-hot-loader';
 import {Provider} from 'react-redux';
+import React from 'react';
 import {render} from 'react-dom';
+import store from './store';
 
 const target = document.getElementById('root');
 
