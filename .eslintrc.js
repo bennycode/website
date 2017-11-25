@@ -1,18 +1,18 @@
-{
+module.exports = {
   "env": {
     "browser": true,
     "commonjs": true,
     "es6": true,
     "jasmine": true,
-    "node": true
+    "node": true,
   },
   "extends": ["prettier", "eslint:recommended", "plugin:react/recommended"],
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
-      "jsx": true
+      "jsx": true,
     },
-    "sourceType": "module"
+    "sourceType": "module",
   },
   "plugins": ["prettier", "react"],
   "rules": {
@@ -22,8 +22,8 @@
       "error",
       {
         "after": true,
-        "before": false
-      }
+        "before": false,
+      },
     ],
     "comma-style": ["error", "last"],
     "complexity": "error",
@@ -32,8 +32,8 @@
       {
         "ignoreCase": true,
         "ignoreMemberSort": false,
-        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-      }
-    ]
-  }
-}
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+      },
+    ],
+  },
+};
