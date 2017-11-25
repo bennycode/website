@@ -1,9 +1,10 @@
-import Grid from 'material-ui/Grid';
 import List, {ListItem, ListItemText} from 'material-ui/List';
+import {connect} from 'react-redux';
+import Grid from 'material-ui/Grid';
+import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import React from 'react';
 import Typography from 'material-ui/Typography';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 
 class CategoryList extends React.Component {
   renderListItems() {
@@ -37,7 +38,16 @@ class CategoryList extends React.Component {
   }
 }
 
-export default connect(state => ({
-  categories: state.categoryState.categories,
-  version: state.statusState.version,
-}))(CategoryList);
+CategoryList.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.object),
+  version: PropTypes.string,
+};
+
+function mapStateToProps(state) {
+  return {
+    categories: state.categoryState.categories,
+    version: state.statusState.version,
+  };
+}
+
+export default connect(mapStateToProps)(CategoryList);

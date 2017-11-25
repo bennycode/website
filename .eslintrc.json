@@ -6,9 +6,7 @@
     "jasmine": true,
     "node": true
   },
-  "extends": [
-    "eslint:recommended"
-  ],
+  "extends": ["prettier", "eslint:recommended", "plugin:react/recommended"],
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -16,18 +14,10 @@
     },
     "sourceType": "module"
   },
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["prettier", "react"],
   "rules": {
-    "brace-style": [
-      "error",
-      "1tbs"
-    ],
-    "comma-dangle": [
-      "error",
-      "always-multiline"
-    ],
+    "brace-style": ["error", "1tbs"],
+    "comma-dangle": ["error", "always-multiline"],
     "comma-spacing": [
       "error",
       {
@@ -35,22 +25,14 @@
         "before": false
       }
     ],
-    "comma-style": [
-      "error",
-      "last"
-    ],
+    "comma-style": ["error", "last"],
     "complexity": "error",
     "sort-imports": [
       "error",
       {
         "ignoreCase": true,
         "ignoreMemberSort": false,
-        "memberSyntaxSortOrder": [
-          "none",
-          "all",
-          "multiple",
-          "single"
-        ]
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
       }
     ]
   }
