@@ -10,7 +10,7 @@
     "inert": "5.0.1",
     "isomorphic-fetch": "2.2.1",
     "joi": "13.0.2",
-    "knex": "0.14.1",
+    "knex": "0.14.2",
     "limax": "1.5.0",
     "material-ui": "1.0.0-beta.17",
     "mkdirp": "0.5.1",
