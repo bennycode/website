@@ -10,10 +10,10 @@
     "inert": "5.0.1",
     "isomorphic-fetch": "2.2.1",
     "joi": "13.0.2",
-    "knex": "0.14.2",
+    "knex": "0.14.1",
     "limax": "1.5.0",
+    "logdown": "3.2.2",
     "material-ui": "1.0.0-beta.17",
-    "mkdirp": "0.5.1",
     "objection": "0.9.2",
     "pg": "7.4.0",
     "prop-types": "15.6.0",
@@ -34,6 +34,8 @@
     "cross-env": "5.1.1",
     "dotenv": "4.0.0",
     "eslint": "4.11.0",
+    "eslint-config-prettier": "2.8.0",
+    "eslint-plugin-prettier": "2.3.1",
     "eslint-plugin-react": "7.5.1",
     "husky": "0.14.3",
     "istanbul": "0.4.5",
@@ -42,7 +44,6 @@
     "nodemon": "1.12.1",
     "nsp": "3.1.0",
     "prettier": "1.8.2",
-    "prettier-eslint-cli": "4.4.0",
     "request": "2.83.0",
     "webpack-dev-server": "2.9.4"
   },
@@ -57,22 +58,24 @@
     "url": "git+https://github.com/welovecoding/website.git"
   },
   "lint-staged": {
-    "src/**/*.{css,js,json,jsx,less,scss}": [
-      "npm run lint",
-      "git add"
-    ]
+    "*.{js,jsx}": ["eslint --ignore-path .gitignore --fix", "git add"],
+    "*.json": ["prettier --ignore-path .gitignore --write", "git add"],
+    "*.scss": ["prettier --ignore-path .gitignore --write", "git add"],
+    "*.ts": ["prettier --ignore-path .gitignore --write", "git add"]
   },
   "scripts": {
-    "clear": "rimraf temp && mkdirp temp",
     "check": "nsp check --output summary",
     "coverage": "npm run coverage:backend",
-    "coverage:backend": "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
-    "dist": "npm run clear && npm run init:db && npm run dist:frontend",
+    "coverage:backend":
+      "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
+    "dist": "npm run init:db && npm run dist:frontend",
     "dist:frontend": "rimraf dist/frontend/js && webpack",
     "init": "npm run init:db",
     "init:db": "knex migrate:latest && knex seed:run",
     "postinstall": "npm run dist",
-    "lint": "prettier-eslint --write \"src/**/*.{css,js,json,jsx,less,scss}\"",
+    "fix": "npm run fix:js && fix:scss",
+    "fix:js": "eslint --ignore-path .gitignore --fix \"**/*.{js,jsx}\"",
+    "fix:scss": "prettier --ignore-path .gitignore --write \"**/*.{scss}\"",
     "precommit": "lint-staged",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",
