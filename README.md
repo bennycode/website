@@ -24,9 +24,13 @@ Production Database | [**PostgreSQL**](https://www.postgresql.org)
 Development Database | [**SQLite**](https://www.sqlite.org)
 Hosting Platform | [**Heroku**](https://dashboard.heroku.com)
 
-## Methodologies
+## Programming Methodologies
 
 Type | Methodology 
 :--- | :--- 
 Commit Message Style | [**Semantic Commit Messages**](https://seesparkbox.com/foundry/semantic_commit_messages)
 Frontend Structure | [**Fractal**](https://hackernoon.com/fractal-a-react-app-structure-for-infinite-scale-4dab943092af)
+
+## Programming Principles
+
+> Always strive to make code that can be modified with the least number of edits. — Lea Verou
