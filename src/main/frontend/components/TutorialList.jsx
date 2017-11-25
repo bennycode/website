@@ -6,6 +6,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 class TutorialList extends React.Component {
+  static propTypes = {
+    actions: PropTypes.object,
+    categories: PropTypes.arrayOf(PropTypes.object),
+    fetchTutorialsByCategoryId: PropTypes.func,
+    match: PropTypes.object.isRequired,
+    tutorials: PropTypes.arrayOf(PropTypes.object),
+  };
+
   componentDidMount() {
     this.getTutorials();
   }
@@ -35,14 +43,6 @@ class TutorialList extends React.Component {
     });
   }
 }
-
-TutorialList.propTypes = {
-  actions: PropTypes.object,
-  categories: PropTypes.arrayOf(PropTypes.object),
-  fetchTutorialsByCategoryId: PropTypes.func,
-  match: PropTypes.object.isRequired,
-  tutorials: PropTypes.arrayOf(PropTypes.object),
-};
 
 function mapStateToProps(state) {
   return {

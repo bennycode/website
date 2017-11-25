@@ -9,6 +9,11 @@ import React from 'react';
 import TutorialList from './TutorialList';
 
 class App extends React.Component {
+  static propTypes = {
+    fetchCategories: PropTypes.func,
+    fetchVersion: PropTypes.func,
+  };
+
   componentDidMount() {
     this.props.fetchCategories();
     this.props.fetchVersion();
@@ -25,11 +30,6 @@ class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  fetchCategories: PropTypes.func,
-  fetchVersion: PropTypes.func,
-};
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({

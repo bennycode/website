@@ -7,6 +7,11 @@ import React from 'react';
 import Typography from 'material-ui/Typography';
 
 class CategoryList extends React.Component {
+  static propTypes = {
+    categories: PropTypes.arrayOf(PropTypes.object),
+    version: PropTypes.string,
+  };
+
   renderListItems() {
     return this.props.categories.map(category => {
       return (
@@ -37,11 +42,6 @@ class CategoryList extends React.Component {
     );
   }
 }
-
-CategoryList.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.object),
-  version: PropTypes.string,
-};
 
 function mapStateToProps(state) {
   return {
