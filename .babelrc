@@ -12,7 +12,13 @@
         "modules": false,
         "targets": {
           "browsers": [
-            "> 1% in my stats"
+            "chrome >= 56",
+            "edge >= 14",
+            "firefox >= 52",
+            "ie >= 11",
+            "ios >= 10",
+            "opera >= 43",
+            "safari >= 10.1"
           ]
         },
         "useBuiltIns": true
