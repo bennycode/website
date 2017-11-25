@@ -1,10 +1,11 @@
 import * as CategoryActionCreators from '../modules/category/CategoryActionCreators';
 import * as StatusActionCreators from '../modules/status/StatusActionCreators';
+import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import CategoryList from './CategoryList';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import React from 'react';
 import TutorialList from './TutorialList';
-import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
-import {connect} from 'react-redux';
 
 class App extends React.Component {
   componentDidMount() {
@@ -23,6 +24,11 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  fetchCategories: PropTypes.func,
+  fetchVersion: PropTypes.func,
+};
 
 export default connect(undefined, {
   ...CategoryActionCreators,
