@@ -63,7 +63,7 @@
     ]
   },
   "scripts": {
-    "clear": "rimraf dist temp && mkdirp temp",
+    "clear": "rimraf temp && mkdirp temp",
     "check": "nsp check --output summary",
     "coverage": "npm run coverage:backend",
     "coverage:backend": "rimraf coverage && npm run dist && cross-env JASMINE_CONFIG_PATH=src/test/support/jasmine.json istanbul cover --report html ./node_modules/jasmine/bin/jasmine.js",
