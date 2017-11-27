@@ -1,21 +1,20 @@
+// https://github.com/facebookincubator/create-react-app/issues/3199#issuecomment-345105612
+import 'raf/polyfill';
+
 import CategoryList from './CategoryList';
+import configureStore from 'redux-mock-store';
+import {MemoryRouter} from 'react-router'
 import {Provider} from 'react-redux';
 import React from 'react';
 import renderer from 'react-test-renderer';
-
-import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-const withStore = (children, store) => {
-  return <Provider store={store}>{children}</Provider>;
-};
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
+const withStore = (children, store) => <Provider store={store}>{children}</Provider>;
 
-const mockStore = () => configureStore([thunk.withExtraArgument()]);
-
-
-test('works', () => {
-  expect(true).toBe(true);
-  const state = {
+it('renders a list of categories', () => {
+  const store = mockStore({
     categoryState: {
       categories: [{
         color: "#8CBE29",
@@ -27,12 +26,18 @@ test('works', () => {
     statusState: {
       version: '0.0.7',
     },
-  };
+  });
 
   const component = renderer.create(
-    withStore(<CategoryList />, mockStore()(state),
+    withStore(
+      <MemoryRouter>
+        <CategoryList />
+      </MemoryRouter>
+      , store,
     ),
   );
 
-  expect(true).toBe(true);
+  const tree = component.toJSON();
+
+  expect(tree.type).toBe('div');
 });
