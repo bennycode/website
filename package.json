@@ -32,6 +32,7 @@
     "webpack": "3.8.1"
   },
   "devDependencies": {
+    "babel-jest": "21.2.0",
     "concurrently": "3.5.1",
     "cross-env": "5.1.1",
     "dotenv": "4.0.0",
@@ -43,10 +44,12 @@
     "husky": "0.14.3",
     "istanbul": "0.4.5",
     "jasmine": "2.8.0",
+    "jest": "21.2.1",
     "lint-staged": "5.0.0",
     "nodemon": "1.12.1",
     "nsp": "3.1.0",
     "prettier": "1.8.2",
+    "react-test-renderer": "16.1.1",
     "request": "2.83.0",
     "webpack-dev-server": "2.9.4"
   },
