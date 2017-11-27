@@ -4,12 +4,13 @@
     "transform-object-rest-spread"
   ],
   "presets": [
+    "jest",
     "react",
     [
       "env",
       {
         "debug": true,
-        "modules": false,
+        "modules": "commonjs",
         "targets": {
           "browsers": [
             "chrome >= 56",
