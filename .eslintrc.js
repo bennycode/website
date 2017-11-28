@@ -4,6 +4,7 @@ module.exports = {
     "commonjs": true,
     "es6": true,
     "jasmine": true,
+    "jest": true,
     "node": true,
   },
   "extends": ["prettier", "eslint:recommended", "plugin:react/recommended"],

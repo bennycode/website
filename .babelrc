@@ -8,7 +8,7 @@
     [
       "env",
       {
-        "debug": true,
+        "debug": false,
         "modules": false,
         "targets": {
           "browsers": [
@@ -24,5 +24,36 @@
         "useBuiltIns": true
       }
     ]
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread"
+      ],
+      "presets": [
+        "jest",
+        "react",
+        [
+          "env",
+          {
+            "debug": false,
+            "modules": "commonjs",
+            "targets": {
+              "browsers": [
+                "chrome >= 56",
+                "edge >= 14",
+                "firefox >= 52",
+                "ie >= 11",
+                "ios >= 10",
+                "opera >= 43",
+                "safari >= 10.1"
+              ]
+            },
+            "useBuiltIns": true
+          }
+        ]
+      ]
+    }
+  }
 }
