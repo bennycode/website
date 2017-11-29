@@ -80,7 +80,7 @@
     "init": "npm run init:db",
     "init:db": "knex migrate:latest && knex seed:run",
     "postinstall": "npm run dist",
-    "fix": "npm run fix:js",    
+    "fix": "npm run fix:js",
     "fix:js": "eslint --ignore-path .gitignore --fix \"**/*.{js,jsx}\"",
     "fix:non-js": "prettier --ignore-path .gitignore --write \"**/*.{json,scss,ts}\"",
     "precommit": "lint-staged",
