@@ -67,7 +67,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": ["eslint --fix", "git add"],
-    "*.{json,scss,ts}": ["prettier --ignore-path .prettierignore --write", "git add"],
+    "*.{json,scss,ts}": ["prettier --ignore-path .prettierignore --write", "git add"]
   },
   "scripts": {
     "clear": "rimraf temp && mkdirp temp",
