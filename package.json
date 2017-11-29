@@ -66,10 +66,8 @@
     "url": "git+https://github.com/welovecoding/website.git"
   },
   "lint-staged": {
-    "*.{js,jsx}": ["eslint --ignore-path .gitignore --fix", "git add"],
-    "*.json": ["prettier --ignore-path .gitignore --write", "git add"],
-    "*.scss": ["prettier --ignore-path .gitignore --write", "git add"],
-    "*.ts": ["prettier --ignore-path .gitignore --write", "git add"]
+    "*.{js,jsx}": ["eslint --fix", "git add"],
+    "*.{json,scss,ts}": ["prettier --ignore-path .prettierignore --write", "git add"]
   },
   "scripts": {
     "clear": "rimraf temp && mkdirp temp",
@@ -82,8 +80,9 @@
     "init": "npm run init:db",
     "init:db": "knex migrate:latest && knex seed:run",
     "postinstall": "npm run dist",
-    "fix": "npm run fix:js",
+    "fix": "npm run fix:js && npm run fix:non-js",
     "fix:js": "eslint --ignore-path .gitignore --fix \"**/*.{js,jsx}\"",
+    "fix:non-js": "prettier --ignore-path .gitignore --write \"**/*.{json,scss,ts}\"",
     "precommit": "lint-staged",
     "preversion": "npm install && npm run dist && npm test",
     "version": "npm run dist",
