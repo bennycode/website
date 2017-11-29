@@ -66,10 +66,10 @@
     "url": "git+https://github.com/welovecoding/website.git"
   },
   "lint-staged": {
-    "*.{js,jsx}": ["eslint --ignore-path .gitignore --fix", "git add"],
-    "*.json": ["prettier --ignore-path .gitignore --write", "git add"],
-    "*.scss": ["prettier --ignore-path .gitignore --write", "git add"],
-    "*.ts": ["prettier --ignore-path .gitignore --write", "git add"]
+    "*.{js,jsx}": ["eslint --fix", "git add"],
+    "*.json": ["prettier --ignore-path .prettierignore --write", "git add"],
+    "*.scss": ["prettier --write", "git add"],
+    "*.ts": ["prettier --write", "git add"]
   },
   "scripts": {
     "clear": "rimraf temp && mkdirp temp",
