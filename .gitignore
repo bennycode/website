@@ -1,5 +1,7 @@
 # WebStorm Project: http://devnet.jetbrains.com/docs/DOC-1186
-/.idea
+/.idea/dbnavigator.xml
+/.idea/vcs.xml
+/.idea/workspace.xml*
 
 # Node Package Manager
 /node_modules
