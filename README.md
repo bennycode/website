@@ -2,7 +2,7 @@
 
 Website with a curated list of free programming tutorials.
 
-[![Greenkeeper Badge](https://badges.greenkeeper.io/welovecoding/website.svg)](https://greenkeeper.io/) [![Build Status](https://travis-ci.org/welovecoding/website.svg?branch=master)](https://travis-ci.org/welovecoding/website)
+[![Build Status](https://travis-ci.org/welovecoding/website.svg?branch=master)](https://travis-ci.org/welovecoding/website)
 
 ## Build
 
