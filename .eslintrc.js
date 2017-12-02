@@ -29,6 +29,7 @@ module.exports = {
     ],
     "comma-style": ["error", "last"],
     "complexity": "error",
+    "prefer-arrow-callback": "error",
     "sort-imports": [
       "error",
       {
