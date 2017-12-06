@@ -30,6 +30,9 @@ module.exports = {
     "comma-style": ["error", "last"],
     "complexity": "error",
     "prefer-arrow-callback": "error",
+    "prefer-const": "error",
+    "prefer-promise-reject-errors": "error",
+    "prefer-template": "error",
     "sort-imports": [
       "error",
       {
