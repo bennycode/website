@@ -13,7 +13,7 @@
     "isomorphic-fetch": "2.2.1",
     "joi": "13.0.2",
     "knex": "0.14.2",
-    "limax": "1.5.0",
+    "limax": "1.6.0",
     "logdown": "3.2.2",
     "material-ui": "1.0.0-beta.26",
     "objection": "0.9.4",
