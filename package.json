@@ -106,5 +106,5 @@
     "test:backend": "cross-env NODE_ENV=test JASMINE_CONFIG_PATH=src/test/support/jasmine.json jasmine",
     "test:frontend": "jest"
   },
-  "version": "1.0.45"
+  "version": "1.0.46"
 }
