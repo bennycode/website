@@ -46,7 +46,7 @@
     "jasmine": "2.8.0",
     "jest": "22.0.4",
     "lint-staged": "6.0.0",
-    "nodemon": "1.14.7",
+    "nodemon": "1.14.8",
     "nsp": "3.1.0",
     "prettier": "1.9.2",
     "raf": "3.4.0",
