@@ -102,7 +102,7 @@
     "postversion": "git push && git push --tags",
     "start": "npm run dist && concurrently \"nodemon index.js\" \"webpack-dev-server --hot --open\"",
     "start:frontend": "concurrently \"nodemon index.js\" \"webpack-dev-server --hot --open\"",
-    "test": "cross-env NODE_ENV=test npm run dist && npm run test:backend && npm run test:frontend",
+    "test": "cross-env-shell NODE_ENV=test npm run dist && npm run test:backend && npm run test:frontend",
     "test:backend": "cross-env NODE_ENV=test JASMINE_CONFIG_PATH=src/test/support/jasmine.json jasmine",
     "test:frontend": "jest"
   },
