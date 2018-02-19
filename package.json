@@ -45,7 +45,7 @@
     "istanbul": "0.4.5",
     "jasmine": "3.0.0",
     "jest": "22.3.0",
-    "lint-staged": "6.1.0",
+    "lint-staged": "6.1.1",
     "nodemon": "1.15.0",
     "nsp": "3.2.1",
     "prettier": "1.10.2",
