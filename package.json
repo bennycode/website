@@ -15,7 +15,7 @@
     "knex": "0.14.4",
     "limax": "1.6.0",
     "logdown": "3.2.3",
-    "material-ui": "1.0.0-beta.39",
+    "material-ui": "1.0.0-beta.40",
     "objection": "1.1.0",
     "pg": "7.4.1",
     "prop-types": "15.6.1",
