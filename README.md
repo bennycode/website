@@ -40,3 +40,5 @@ Frontend Structure | [**Fractal**](https://hackernoon.com/fractal-a-react-app-st
 ### Programming Principles
 
 > Always strive to make code that can be modified with the least number of edits. — Lea Verou
+
+> The ideal number of arguments for a function is zero (niladic). Next comes one (monadic), followed closely by two (dyadic). Three arguments (triadic) should be avoided where possible. More than three (polyadic) requires very special justification -- and then shouldn't be used anyway. — Robert C. Martin
